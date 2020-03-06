@@ -4,7 +4,14 @@
     margin-bottom: 1rem;
     margin: 0;
     padding: 0;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCRc4EsA.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
+
+/*aqui colocando la imagen de la parte superior*/
 
 header{
     width: auto;
@@ -13,8 +20,27 @@ header{
     background-size: cover;
     background-position: center;
 }
+/*TITULO PRINCIPAL DE LA PAGINA*/
+.contenedor{
+    width: 80%;
+    margin: 0 auto;
+}
 
-.llamada{
+.titulo{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo > h1 {
+    font-size: 68px;
+    color: #fff;
+}
+
+/*aqui colocando la imagen de la parte inferior*/
+
+.Iconos{
     background: url('../img/images/banner.jpg');
     background-size: cover;
     background-position: center;
@@ -23,3 +49,25 @@ header{
     height: 500px;
 }
 
+/*estilos para el menu*/
+
+nav{
+    position: fixed;
+    width: 100%;
+}
+
+nav ul{
+    text-align: center;
+    list-style: none;
+    margin-top: 25px;;
+}
+
+nav ul li {
+    padding: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 24px;
+}

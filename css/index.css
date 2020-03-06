@@ -1,0 +1,25 @@
+/* aqui estilos para el index.html*/
+
+*{
+    margin-bottom: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    width: auto;
+    height: 100vh;
+    background: url('../img/images/sub_banner.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.llamada{
+    background: url('../img/images/banner.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    width: auto;
+    height: 500px;
+}
+

@@ -9,6 +9,7 @@
     font-weight: 300;
     src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCRc4EsA.woff2) format('woff2');
     unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+    box-sizing: border-box;
 }
 
 /*aqui colocando la imagen de la parte superior*/
@@ -20,54 +21,84 @@ header{
     background-size: cover;
     background-position: center;
 }
+
 /*TITULO PRINCIPAL DE LA PAGINA*/
 .contenedor{
     width: 80%;
     margin: 0 auto;
 }
-
 .titulo{
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .titulo > h1 {
     font-size: 68px;
     color: #fff;
 }
 
 /*aqui colocando la imagen de la parte inferior*/
-
 .Iconos{
     background: url('../img/images/banner.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     width: auto;
-    height: 500px;
+    height: 300px;
 }
 
 /*estilos para el menu*/
-
 nav{
     position: fixed;
     width: 100%;
+    z-index: 99999;
 }
-
 nav ul{
     text-align: center;
     list-style: none;
     margin-top: 25px;;
 }
-
 nav ul li {
     padding: 20px;
 }
-
 nav ul li a {
     text-decoration: none;
     color: #fff;
     font-size: 24px;
 }
+
+/*ESTILOS PARA LA SECCION HOME O PRICIPAL*/
+div[class="principal"]{
+    height: 480px;
+}
+div[class="principal"] div[class="contenedor"] article{
+    padding-top: 150px;
+    text-align: center;
+}
+div[class="contenedor"] article h3 {
+    font-size: 32px;
+    padding-bottom: 30px;
+}
+div[class="contenedor"] article p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+div[class="contenedor"] article p blockquote{
+    font-size: 18px;
+}
+
+/*ESTILOS PARA LA SECCION ABOUT*/
+div[class="About"] div.contenedor{
+    padding: 30px;
+}
+.box-shadow-full {
+    padding: 3rem 1.25rem;
+    position: relative;
+    background-color: #fff;
+    margin-bottom: 3rem;
+    z-index: 2;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+

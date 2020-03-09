@@ -17,7 +17,7 @@
 header{
     width: auto;
     height: 100vh;
-    background: url('../img/images/sub_banner.jpg');
+    background: url('../img/images/profile.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -40,7 +40,7 @@ header{
 
 /*aqui colocando la imagen de la parte inferior*/
 .Iconos{
-    background: url('../img/images/banner.jpg');
+    background: url('../img/images/tapa.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -98,7 +98,24 @@ div[class="About"] div.contenedor{
     background-color: #fff;
     margin-bottom: 3rem;
     z-index: 2;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.88), 0 2px 5px 0 rgba(0, 0, 0, 0.10);
 }
 
+/*ESTILOS PARA LA SECCION DE PROFILE*/
+div[class="container"] div.row{
+    padding: 55px;
+}
+div[class="card h-100"]{
+    text-align: center !important;
+}
+div[class="card h-100"] img{
+    width: 35% !important;
+    height: 60% !important;
+    margin: auto !important;
+    padding-top: 30px;
+}
 
+/*ESTILOS PARA LA SECCION DEL CONTATEME*/
+div[class="Iconos"] h3{
+    color: #fff;
+}

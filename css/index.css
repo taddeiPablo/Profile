@@ -27,6 +27,13 @@ header{
     width: 80%;
     margin: 0 auto;
 }
+
+.contenedor_pie{
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 80px;
+}
+
 .titulo{
     height: 100vh;
     display: flex;
@@ -45,7 +52,7 @@ header{
     background-position: center;
     background-attachment: fixed;
     width: auto;
-    height: 300px;
+    height: 100vh;
 }
 
 /*estilos para el menu*/
@@ -119,3 +126,7 @@ div[class="card h-100"] img{
 div[class="Iconos"] h3{
     color: #fff;
 }
+
+/*div[class="form-group"] > input, textarea{
+    width: 60% !important;
+}*/

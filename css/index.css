@@ -1,4 +1,7 @@
-/* aqui estilos para el index.html*/
+/**************************************************
+**************************************************
+*****   AQUI ESTAN LOS ESTILOS PARA INDEX.HTML  ******/
+
 
 *{
     margin-bottom: 1rem;
@@ -26,12 +29,6 @@ header{
 .contenedor{
     width: 80%;
     margin: 0 auto;
-}
-
-.contenedor_pie{
-    width: 80%;
-    margin: 0 auto;
-    padding-top: 80px;
 }
 
 .titulo{
@@ -108,6 +105,11 @@ div[class="About"] div.contenedor{
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.88), 0 2px 5px 0 rgba(0, 0, 0, 0.10);
 }
 
+div[class="col-sm-6 col-md-7"] {
+    padding-left: 0px;
+}
+
+
 /*ESTILOS PARA LA SECCION DE PROFILE*/
 div[class="container"] div.row{
     padding: 55px;
@@ -116,7 +118,7 @@ div[class="card h-100"]{
     text-align: center !important;
 }
 div[class="card h-100"] img{
-    width: 35% !important;
+    width: 30% !important;
     height: 60% !important;
     margin: auto !important;
     padding-top: 30px;
@@ -127,6 +129,27 @@ div[class="Iconos"] h3{
     color: #fff;
 }
 
-/*div[class="form-group"] > input, textarea{
-    width: 60% !important;
-}*/
+.contenedor_pie{
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 120px;
+}
+
+.getinfo{
+    padding: 10px;
+    display: inline-grid;
+    margin-left: 15%;
+}
+
+div[class="getinfo"] > div {
+    color: white;
+}
+
+form > div[class="form-group"]{
+    padding: 15px;
+}
+
+div[class="title-box-2 pt-4 pt-md-0"] > h6[class="title-left"] {
+    color: white;
+}
+

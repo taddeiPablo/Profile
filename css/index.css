@@ -75,6 +75,9 @@ nav ul li a {
     font-size: 24px;
 }
 
+li a:hover{
+    color: #0078ff !important;
+}
 
 
 /*Navigation bg */

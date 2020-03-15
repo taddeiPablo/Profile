@@ -8,16 +8,18 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css" rel="stylesheet">
-    <title>Sitio Web Personal</title>
+    <script src="lib/jquery/jquery-3.4.1.min.js"></script>
+    <script src="javascript/index.js"></script>
+    <title>Pablo Taddei</title>
 </head>
 <body>
     <div>
-        <nav>
+        <nav id="navegacion" class="navbar-header">
             <ul class="nav justify-content-center">
-                <li class="nav-item"><a href="#">Home</a></li>
-                <li class="nav-item"><a href="#">About Me</a></li>
-                <li class="nav-item"><a href="#">Porfolio</a></li>
-                <li class="nav-item"><a href="#">Contact Me</a></li>
+                <li class="nav-item"><a id="principal" href="#">Home</a></li>
+                <li class="nav-item"><a id="About" href="#">About Me</a></li>
+                <li class="nav-item"><a id="profile" href="#">Porfolio</a></li>
+                <li class="nav-item"><a id="Iconos" href="#">Contact Me</a></li>
             </ul>
         </nav>
         <!-- IMAGEN SUPERIOR-->
@@ -205,7 +207,7 @@
               </div>
             </div>
             <!--ACA FORMULARIO PARA CONTACTARME-->
-            <div class="Iconos">
+            <div id="Cont" class="Iconos">
                 <div class="contenedor_pie">
                     <div class="texto">
                         <h3>Contact Me</h3>

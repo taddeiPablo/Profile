@@ -1,6 +1,8 @@
 /**************************************************
 **************************************************
-*****   AQUI ESTAN LOS ESTILOS PARA INDEX.HTML  ******/
+*****   AQUI ESTAN LOS ESTILOS PARA INDEX.HTML  ******
+/*****************************************************
+*******************************************************/
 
 
 *{
@@ -152,4 +154,37 @@ form > div[class="form-group"]{
 div[class="title-box-2 pt-4 pt-md-0"] > h6[class="title-left"] {
     color: white;
 }
+
+/*Navigation bg */
+.navbar-toggle{
+  border:0;
+  background:none !important;
+  color:black;
+}
+ 
+ 
+.navbar-toggle:hover{
+  background:none !important;
+}
+ 
+.navbar-default{
+  background:none;
+  border-color:transparent;
+  transition-duration: 1s;
+  
+  }
+ 
+.navbar-default .navbar-brand{
+  color:white;
+  }
+  
+.navbar-default .navbar-nav li a{
+  color:#fff;
+  font-size: 9pt;
+  font-weight:bold;
+  }
+ 
+.navbar-default .navbar-nav li a:hover {
+  color:#609cd3;
+  } 
 

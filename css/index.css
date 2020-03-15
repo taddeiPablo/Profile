@@ -74,6 +74,41 @@ nav ul li a {
     font-size: 24px;
 }
 
+
+
+/*Navigation bg */
+.navbar-toggle{
+    border:0;
+    background:none !important;
+    color:black;
+  }
+   
+   
+  .navbar-toggle:hover{
+    background:none !important;
+  }
+   
+  .navbar-default{
+    background:none;
+    border-color:transparent;
+    transition-duration: 1s;
+    
+    }
+   
+  .navbar-default .navbar-brand{
+    color:white;
+    }
+    
+  .navbar-default .navbar-nav li a{
+    color:#fff;
+    font-size: 9pt;
+    font-weight:bold;
+    }
+   
+.navbar-header .justify-content-center li a:hover {
+    color: #fff;
+}
+
 /*ESTILOS PARA LA SECCION HOME O PRICIPAL*/
 div[class="principal"]{
     height: 480px;
@@ -110,7 +145,6 @@ div[class="About"] div.contenedor{
 div[class="col-sm-6 col-md-7"] {
     padding-left: 0px;
 }
-
 
 /*ESTILOS PARA LA SECCION DE PROFILE*/
 div[class="container"] div.row{
@@ -153,38 +187,5 @@ form > div[class="form-group"]{
 
 div[class="title-box-2 pt-4 pt-md-0"] > h6[class="title-left"] {
     color: white;
-}
-
-/*Navigation bg */
-.navbar-toggle{
-  border:0;
-  background:none !important;
-  color:black;
-}
- 
- 
-.navbar-toggle:hover{
-  background:none !important;
-}
- 
-.navbar-default{
-  background:none;
-  border-color:transparent;
-  transition-duration: 1s;
-  
-  }
- 
-.navbar-default .navbar-brand{
-  color:white;
-  }
-  
-.navbar-default .navbar-nav li a{
-  color:#fff;
-  font-size: 9pt;
-  font-weight:bold;
-  }
- 
-.navbar-default .navbar-nav li a:hover {
-  color:#609cd3;
-  } 
+} 
 

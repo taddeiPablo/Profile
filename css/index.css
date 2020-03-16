@@ -47,13 +47,19 @@ header{
 .titulo > h1 {
     font-size: 68px;
     color: #fff;
-    border: 7px double #fff;
+    border: 10px double #fff;
     padding: 40px 60px;
 }
 
 /*aqui colocando la imagen de la parte inferior*/
 .Iconos{
-    background: url('../img/images/tapa.jpg');
+    background: 
+    linear-gradient(
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.6)
+    ),
+    url('../img/images/tapa.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -176,7 +182,7 @@ div[class="card h-100"]{
     text-align: center !important;
 }
 div[class="card h-100"] img{
-    width: 30% !important;
+    width: 25% !important;
     height: 60% !important;
     margin: auto !important;
     padding-top: 30px;
@@ -211,3 +217,6 @@ div[class="title-box-2 pt-4 pt-md-0"] > h6[class="title-left"] {
     color: white;
 } 
 
+p[class="lead"]{
+    font-size: 1.15rem !important;
+}

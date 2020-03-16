@@ -22,7 +22,12 @@
 header{
     width: auto;
     height: 100vh;
-    background: url('../img/images/profile.jpg');
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.6)
+    ), 
+    url('../img/images/profile.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -42,6 +47,8 @@ header{
 .titulo > h1 {
     font-size: 68px;
     color: #fff;
+    border: 7px double #fff;
+    padding: 40px 60px;
 }
 
 /*aqui colocando la imagen de la parte inferior*/
@@ -67,8 +74,19 @@ nav ul{
     margin-top: 0px;;
 }
 nav ul li {
+    display: inline-block;
     padding: 20px;
+    transition: all .3s ease;
 }
+
+nav ul li:hover {
+    transform: scale(1.1);
+}
+
+nav ul li:hover a{
+    border-bottom: 1px solid #0078ff;
+}
+
 nav ul li a {
     text-decoration: none;
     color: #fff;

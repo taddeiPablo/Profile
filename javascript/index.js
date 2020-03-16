@@ -50,16 +50,16 @@ $(function(){
         $.magnificPopup.open({
             items: [
                 {
-                    src: 'img/projects/'
+                    src: 'img/projects/blender/crylers.png'
                 },
                 {
-                    src: 'img/projects/'
+                    src: 'img/projects/blender/chevrolet-pickup.png'
                 },
                 {
-                    src: 'img/projects/'
+                    src: 'img/projects/blender/bentley-mk6.png'
                 },
                 {
-                    src: 'img/projects/'
+                    src: 'img/projects/blender/pampa3.png'
                 }
 
             ],

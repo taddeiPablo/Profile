@@ -69,6 +69,10 @@ $(function(){
                 {
                     src: 'img/projects/blender/pampa3.png',
                     title: 'Blender : modelado de un IA 64 PAMPA 3'
+                },
+                {
+                    src:'img/projects/blender/escenario.png',
+                    title: 'Blender : creacion de materiales y texturas'
                 }
 
             ],
@@ -78,4 +82,6 @@ $(function(){
             type: 'image'
         });
      });
+
+     
 });

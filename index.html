@@ -1,287 +1,645 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap-4.4.1-dist/css/bootstrap.min.css">
-    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css" rel="stylesheet">
-    <link rel="stylesheet" href="lib/Magnific-Popup/dist/magnific-popup.css">
-    <script src="lib/jquery/jquery-3.4.1.min.js"></script>
-    <script src="lib/Magnific-Popup/dist/jquery.magnific-popup.min.js"></script>
-    <script src="javascript/index.js"></script>
-    <title>Pablo Taddei</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pablo Taddei • Fullstack Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    
+    /* Modal Popup Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      animation: fadeIn 0.3s ease-in;
+    }
+
+    .modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90vh;
+      position: relative;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      animation: slideIn 0.3s ease-out;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-body {
+      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f5f5f5;
+      overflow: auto;
+      max-height: calc(90vh - 60px);
+    }
+
+    .modal img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      padding: 20px;
+    }
+
+    .modal-header {
+      background: #1e40af;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+      min-height: 60px;
+    }
+
+    .modal-title {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      word-break: break-word;
+    }
+
+    .close-btn {
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0 0 0 10px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .close-btn:hover {
+      color: #ccc;
+    }
+
+    .modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      font-size: 24px;
+      padding: 12px 15px;
+      cursor: pointer;
+      z-index: 10;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    .modal-nav:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-nav.prev {
+      left: 15px;
+    }
+
+    .modal-nav.next {
+      right: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .modal-content {
+        max-width: 95%;
+        max-height: 85vh;
+      }
+
+      .modal-title {
+        font-size: 12px;
+      }
+
+      .modal img {
+        padding: 15px;
+      }
+
+      .modal-nav {
+        font-size: 20px;
+        padding: 10px 12px;
+      }
+    }
+  </style>
 </head>
-<body>
-    <div>
-        <nav id="navegacion" class="navbar-header">
-            <ul class="nav justify-content-center">
-                <li class="nav-item"><a id="principal" href="#">Home</a></li>
-                <li class="nav-item"><a id="About" href="#">About Me</a></li>
-                <li class="nav-item"><a id="profile" href="#">Porfolio</a></li>
-                <li class="nav-item"><a id="Iconos" href="#">Contact Me</a></li>
-            </ul>
-        </nav>
-        <!-- IMAGEN SUPERIOR-->
-        <header>
-            <div class="contenedor">
-                <div class="titulo">
-                    <h1>I am Pablo</h1>
-                </div>
-            </div>
-        </header>
-        <main>
-            <!--HOME-->
-            <div class="principal">
-                <div class="contenedor">
-                    <article>
-                        <h2>Welcome to my website</h2>
-                        <p>
-                          
-                            <blockquote>Esta es una cita (2020) <cite>Aprende a hacer una pagina web</cite></blockquote>
-                        </p>
-                    </article>
-                </div>
-            </div>
-            <!-- ACERCA DE MI-->
-            <div class="About">
-                <div class="contenedor">
-                    <div class="row">
-                        <div class="col-sm-12">
-                          <div class="box-shadow-full">
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="row">
-                                  <div class="col-sm-6 col-md-5">
-                                    <div class="about-img">
-                                      <img src="img/Profile.jpg" class="img-fluid rounded b-shadow-a" alt="">
-                                    </div>
-                                  </div>
-                                  <div class="col-sm-6 col-md-7">
-                                    <div class="about-info">
-                                      <p><span class="title-s"><b>Name : </b></span><span>Pablo Alejandro Taddei</span></p>
-                                      <p><span class="title-s"><b>Profile : </b> </span> <span>Software developer</span></p>
-                                      <p><span class="title-s"><b>Email : </b></span> <span>Taddeiapablo23@gmail.com</span></p>
-                                      <p><span class="title-s"><b>Phone : </b></span> <span>(011) 1557035196</span></p>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="skill-mf">
-                                  <p class="title-s"><b>Skill</b></p>
-                                  <span><b>HTML</b></span> <span class="pull-right"><b>85%</b></span>
-                                  <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                                  <br>
-                                  <span><b>CSS3</b></span> <span class="pull-right"><b>85%</b></span>
-                                  <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                                  <br>
-                                  <!--<span>PHP</span> <span class="pull-right">50%</span>
-                                  <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>-->
-                                  <span><b>JAVASCRIPT</b></span> <span class="pull-right"><b>90%</b></span>
-                                  <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                                  <br>
-                                  <span><b>.NET FRAMEWORK</b></span> <span class="pull-right"><b>85%</b></span>
-                                  <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                                  <br>
-                                  <span><b>ANDROID</b></span> <span class="pull-right"><b>40%</b></span>
-                                  <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="about-me pt-4 pt-md-0">
-                                  <div class="title-box-2">
-                                    <h5 class="title-left">
-                                      <b>About me</b>
-                                    </h5>
-                                  </div>
-                                  <p class="lead">
-                                    My name is Pablo and I am 31 years, I'm from Quilmes (Buenos Aires, Argentina). 
-                                    I'm a software developer for about eight years.
-                                  </p>
-                                  <p class="lead">
-                                    In these years I have had the opportunity to use different software development technologies, 
-                                    and thus gain a lot of experience in various technologies.
-                                  </p>
-                                  <p class="lead">
-                                    The technology on which I serve at the moment are : </br>
-                                    <b>*</b>.Net Framework (C#, VB .NET, ASP .NET, SQL SERVER 2008, 2012).</br>
-                                    <b>*</b> Web Technology (HTML5, CSS3, JavaScript frameworks (jQuery, Ko.js, Angular.Js, React.Js).</br>
-                                    <b>*</b> Javascript Frameworks (Node.js, Express.js).</br>
-                                    <b>*</b> Python. </br>
-                                    <b>*</b> Mobile Technology: (Android SDK).</br>
-                                    <b>*</b> Mobile Web Frameworks: (Phonegap, ionic).</br>
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--PROFILE -->
-            <div class="profile">
-              <div class="container">
-                <div class="col-sm-12">
-                  <div class="title-box text-center">
-                    <h3 class="title-a">
-                      Portfolio
-                    </h3>
-                    <p class="subtitle-a">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    </p>
-                    <div class="line-mf"></div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="work-box">
-                      <div>
-                        <div class="card h-100">
-                          <img class="card-img-top" src="iconos/vs.png" alt="">
-                          <div class="card-body">
-                            <h4 class="card-title">.Net Developer</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                          </div>
-                          <div class="card-footer">
-                            <button id="vs-button" class="btn btn-primary">Open Gallery</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="work-box">
-                      <div>
-                        <div class="card h-100">
-                          <img class="card-img-top" src="iconos/HTML_CSS_JS.jpg" alt="">
-                          <div class="card-body">
-                            <h4 class="card-title">Web Developer</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                          </div>
-                          <div class="card-footer">
-                            <button id="html-button" class="btn btn-primary">Open Gallery</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="work-box">
-                      <div>
-                        <div class="card h-100">
-                          <img class="card-img-top" src="iconos/blender.png" alt="">
-                          <div class="card-body">
-                            <h4 class="card-title">Modeling 3D</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                          </div>
-                          <div class="card-footer">
-                            <button id="blend-button" class="btn btn-primary">Open Gallery</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="work-box">
-                      <div>
-                        <div class="card h-100">
-                          <img class="card-img-top" src="iconos/netcore.png" alt="">
-                          <div class="card-body">
-                            <h4 class="card-title">Net Core</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                          </div>
-                          <div class="card-footer">
-                            <button id="netcore-button" class="btn btn-primary">Open Gallery</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-
-                  </div>
-                  <div class="col-md-4">
-
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-            <!--ACA FORMULARIO PARA CONTACTARME-->
-            <div id="Cont" class="Iconos">
-                <div class="contenedor_pie">
-                    <div class="texto">
-                        <h3>Contact Me</h3>
-                    </div>
-                    <div class="contacteme">
-                      <div class="row">
-                        <div class="col-6">
-                          <form>
-                            <div class="form-group">
-                              <!--<label for="exampleFormControlInput1">Name</label>-->
-                              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name">
-                            </div>
-                            <div class="form-group">
-                              <!--<label for="exampleFormControlInput1">Email address</label>-->
-                              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                            </div>
-                            <div class="form-group">
-                              <!--<label for="exampleFormControlTextarea1">Ingrese su consulta</label>-->
-                              <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="messages" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                              <button id="send" class="btn btn-outline-primary">Send</button>
-                            </div>
-                          </form>
-                        </div>
-                        <div class="col-6">
-                          <div class="getinfo">
-                            <div class="title-box-2 pt-4 pt-md-0">
-                              <h6 class="title-left">
-                                Get in Touch
-                              </h6>
-                            </div>
-                            <div class="more-info">
-                              <ul class="list-ico">
-                                <li><span class="ion-ios-location"></span> 880 N°: 3324, San Francisco Solano, Quilmes, Buenos Aires Argentina.</li>
-                                <li><span class="ion-ios-telephone"></span> (+54) 15-5703-5196</li>
-                                <li><span class="ion-email"></span> taddeiapablo23@gmail.com</li>
-                              </ul>
-                            </div>
-                            <div class="socials">
-                              <ul>
-                                <li><a href=""><span class="ico-circle"><i class="ion-social-facebook"></i></span></a></li>
-                                <!--<li><a href=""><span class="ico-circle"><i class="ion-social-instagram"></i></span></a></li>-->
-                                <li><a href=""><span class="ico-circle"><i class="ion-social-twitter"></i></span></a></li>
-                                <li><a href=""><span class="ico-circle"><i class="icon ion-social-linkedin"></i></span></a></li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-        <!--<footer>
-            <div class="contenedor">
-                <p>Diseñado por Pablo Taddei</p>
-            </div>
-        </footer>-->
+<body class="bg-gray-50 text-gray-800">
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-semibold">Pablo Taddei</h1>
+      <ul class="flex space-x-6 text-sm font-medium">
+        <li><a href="#home" class="hover:text-blue-600">Home</a></li>
+        <li><a href="#about" class="hover:text-blue-600">About</a></li>
+        <li><a href="#experience" class="hover:text-blue-600">Experience</a></li>
+        <li><a href="#projects" class="hover:text-blue-600">Projects</a></li>
+        <li><a href="#contact" class="hover:text-blue-600">Contact</a></li>
+      </ul>
     </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="pt-32 pb-20">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
+      <div class="flex-1">
+        <h2 class="text-4xl md:text-5xl font-bold leading-tight">Fullstack Developer</h2>
+        <p class="mt-4 text-lg text-gray-600">
+          Hi, I'm Pablo — a fullstack software developer specialized in building
+          scalable web applications with modern technologies.
+        </p>
+        <div class="mt-6">
+          <a href="#projects" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">View Projects</a>
+        </div>
+      </div>
+      <div class="flex-1 flex justify-center">
+        <img src="img/Profile.jpg" alt="Profile" class="rounded-xl shadow-lg w-64 h-64 object-cover" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-4">
+      <h3 class="text-3xl font-semibold mb-6">About Me</h3>
+      <p class="text-gray-700 leading-relaxed">
+        I'm Pablo, a fullstack developer with more than 8 years of professional experience in software development.
+        I've worked with a variety of technologies across backend, frontend, and mobile, allowing me to adapt to
+        different challenges and architectures.
+      </p>
+
+      <h4 class="text-xl font-semibold mt-10 mb-4">Skills</h4>
+      <div class="flex flex-wrap gap-3">
+        <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">C# / .NET</span>
+        <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">ASP.NET / Web API</span>
+        <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">SQL Server</span>
+        <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">HTML5 / CSS3</span>
+        <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">JavaScript</span>
+        <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">Node.js</span>
+        <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">Express.js</span>
+        <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">React.js</span>
+        <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">Angular</span>
+        <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">Python</span>
+        <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">Go</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE TIMELINE -->
+  <section id="experience" class="py-20 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-4">
+      <h3 class="text-3xl font-semibold mb-12 text-center">Experience</h3>
+      <div class="relative border-l border-gray-300 ml-4">
+
+        <!-- Q4Tech -->
+        <div class="mb-10 ml-6">
+          <div class="absolute w-3 h-3 bg-blue-600 rounded-full -left-1.5 mt-1.5"></div>
+          <h4 class="text-xl font-semibold">Q4Tech</h4>
+          <p class="text-sm text-gray-600">Analista de programación • Sep 2015 – Mar 2025 (9 años 7 meses)</p>
+          <p class="text-gray-700 mt-2 text-sm leading-relaxed">
+            Desarrollo de software con Microsoft .NET (Visual Studio 2010, SQL Server 2008).<br>
+            Desarrollo mobile con Android y React Native.<br>
+            Desarrollo de WebApps utilizando AngularJS.
+          </p>
+        </div>
+
+        <!-- QSolutions -->
+        <div class="mb-10 ml-6">
+          <div class="absolute w-3 h-3 bg-blue-600 rounded-full -left-1.5 mt-1.5"></div>
+          <h4 class="text-xl font-semibold">QSolutions S.A</h4>
+          <p class="text-sm text-gray-600">Programador • Mayo 2014 – Julio 2014 (3 meses)</p>
+          <p class="text-gray-700 mt-2 text-sm leading-relaxed">
+            Desarrollo de aplicaciones web y móviles.
+          </p>
+        </div>
+
+        <!-- Accenture -->
+        <div class="mb-10 ml-6">
+          <div class="absolute w-3 h-3 bg-blue-600 rounded-full -left-1.5 mt-1.5"></div>
+          <h4 class="text-xl font-semibold">Accenture</h4>
+          <p class="text-sm text-gray-600">Programmer • Oct 2013 – Abr 2014 (7 meses)</p>
+          <p class="text-gray-700 mt-2 text-sm leading-relaxed">
+            Desarrollo de aplicaciones web para clientes corporativos en Buenos Aires.
+          </p>
+        </div>
+
+        <!-- Tenaris CCR Project -->
+        <div class="mb-10 ml-6">
+          <div class="absolute w-3 h-3 bg-blue-600 rounded-full -left-1.5 mt-1.5"></div>
+          <h4 class="text-xl font-semibold">Tenaris (Proyecto CCR)</h4>
+          <p class="text-sm text-gray-600">Programador</p>
+          <p class="text-gray-700 mt-2 text-sm leading-relaxed">
+            Desarrollo con ASP MVC 4, MVVM (Knockout.js) y Microsoft Dynamics.
+          </p>
+        </div>
+
+        <!-- Proyecto Publishing / SharePoint -->
+        <div class="mb-10 ml-6">
+          <div class="absolute w-3 h-3 bg-blue-600 rounded-full -left-1.5 mt-1.5"></div>
+          <h4 class="text-xl font-semibold">Proyecto Publishing 2.0 / CIO Content Apps</h4>
+          <p class="text-sm text-gray-600">Programmer • Oct 2011 – Oct 2013 (2 años 1 mes)</p>
+          <p class="text-gray-700 mt-2 text-sm leading-relaxed">
+            Creación y mantenimiento de sitios web con SharePoint 2007.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section id="projects" class="py-20">
+    <div class="max-w-6xl mx-auto px-4">
+      <h3 class="text-3xl font-semibold mb-10 text-center">Projects</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+
+        <!-- Project Card .NET Developer -->
+        <div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
+          <div class="p-5">
+            <img src="iconos/vs.png" class="w-full h-40 object-contain mb-4" />
+            <h4 class="text-xl font-semibold mb-2">.NET Developer</h4>
+            <p class="text-gray-600 text-sm mb-6">
+              A collection of enterprise applications built with .NET Framework, C#, and SQL Server.
+            </p>
+            <button 
+              class="view-project w-full px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition font-medium" 
+              data-gallery="dotnet" 
+              data-images='[
+                {"image":"img/projects/net/estacionamiento/estacionamiento.png","title":"Estacionamiento App - github"},
+                {"image":"img/projects/net/cotizador/app_cotizador_para_tienda_de_ropa.png","title":"Cotizador App - Cotizador para una tienda de ropa"},
+                {"image":"img/projects/net/AppVideoClub.png","title":"VideoClub App - Github"}
+              ]'>
+              View Gallery
+            </button>
+          </div>
+          <div class="bg-gray-50 p-4 border-t">
+            <p class="text-gray-700 text-sm leading-relaxed">
+              Developed robust enterprise solutions using .NET Framework with focus on scalability and performance. 
+              Implemented complex business logic, database optimization, and secure API integrations for corporate clients.
+            </p>
+          </div>
+        </div>
+
+        <!-- Project Card Web Development -->
+        <div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
+          <div class="p-5">
+            <img src="iconos/HTML_CSS_JS.jpg" class="w-full h-40 object-contain mb-4" />
+            <h4 class="text-xl font-semibold mb-2">Web Development</h4>
+            <p class="text-gray-600 text-sm mb-6">
+              Modern UI/UX websites created using HTML5, CSS3, JavaScript and React.
+            </p>
+            <button 
+              class="view-project w-full px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition font-medium" 
+              data-gallery="web" 
+              data-images='[
+                {"image":"img/projects/web/apps creadas/pantalla inicial.png","title":"App de busqueda de peliculas en React.js - descripcion"},
+                {"image":"img/projects/web/calculadora freelance/calculadora_freelance_angularjs.PNG","title":"Calculadora para freelancers en angular.js | Github"},
+                {"image":"img/projects/web/fastlearn/home_react.PNG","title":"Plataforma de E-Learning - realizada en Reac.js + Supabase | Github"},
+                {"image":"img/projects/web/fastlearn/login_react.PNG","title":"Plataforma de E-Learning - realizada en Reac.js + Supabase | Github"},
+                {"image":"img/projects/web/fastlearn/signup_react.PNG","title":"Plataforma de E-Learning - realizada en Reac.js + Supabase | Github"},
+                {"image":"img/projects/web/fastlearn/dashboard_react.PNG","title":"Plataforma de E-Learning - realizada en Reac.js + Supabase | Github"},
+                {"image":"img/projects/web/gifs_app/gifs_app.PNG","title": "Buscador de Gifs angular 20+ | Github"},
+                {"image":"img/projects/web/gifs_app/gifs_app_search.PNG","title": "Buscador de Gifs angular 20+ | Github"},
+                {"image":"img/projects/web/gifs_app/gifs_app_busqueda_cache.PNG","title": "Buscador de Gifs angular 20+| Github"},
+                {"image":"img/projects/web/notes_app/Home_notesApp.PNG","title": "App de Notas (Angular 20+) + supabase | Github"},
+                {"image":"img/projects/web/notes_app/login_notesApp.PNG","title": "App de Notas (Angular 20+) + supabase | Github"}
+              ]'>
+              View Gallery
+            </button>
+          </div>
+          <div class="bg-gray-50 p-4 border-t">
+            <p class="text-gray-700 text-sm leading-relaxed">
+              Created responsive and interactive web applications with modern frameworks. 
+              Focused on user experience, accessibility, and performance optimization across all devices and browsers.
+            </p>
+          </div>
+        </div>
+
+        <!-- Project Card React.js -->
+        <div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
+          <div class="p-5">
+            <img src="iconos/react2.png" class="w-full h-40 object-contain mb-4" />
+            <h4 class="text-xl font-semibold mb-2">React.js</h4>
+            <p class="text-gray-600 text-sm mb-6">
+              APIs and backend services built on .NET Core with modern architecture patterns.
+            </p>
+            <button 
+              class="view-project w-full px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition font-medium" 
+              data-gallery="netcore" 
+              data-images='[
+                {"image":"img/projects/netcore-1.jpg","title":"Microservices Architecture - Scalable services using .NET Core with Docker containerization"},
+                {"image":"img/projects/netcore-2.jpg","title":"Cloud Integration - Azure deployment with CI/CD pipelines and auto-scaling"},
+                {"image":"img/projects/netcore-3.jpg","title":"High-Performance API - Optimized endpoints with caching, compression and async operations"}
+              ]'>
+              View Gallery
+            </button>
+          </div>
+          <div class="bg-gray-50 p-4 border-t">
+            <p class="text-gray-700 text-sm leading-relaxed">
+              Built high-performance backend services using .NET Core with microservices architecture. 
+              Implemented cloud deployment, containerization, and CI/CD pipelines for seamless scaling and maintenance.
+            </p>
+          </div>
+        </div>
+
+        <!-- Project Card Angular -->
+        <div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
+          <div class="p-5">
+            <img src="iconos/angular-icon.jpg" class="w-full h-40 object-contain mb-4" />
+            <h4 class="text-xl font-semibold mb-2">Angular</h4>
+            <p class="text-gray-600 text-sm mb-6">
+              APIs and backend services built on .NET Core with modern architecture patterns.
+            </p>
+            <button 
+              class="view-project w-full px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition font-medium" 
+              data-gallery="netcore" 
+              data-images='[
+                {"image":"img/projects/netcore-1.jpg","title":"Microservices Architecture - Scalable services using .NET Core with Docker containerization"},
+                {"image":"img/projects/netcore-2.jpg","title":"Cloud Integration - Azure deployment with CI/CD pipelines and auto-scaling"},
+                {"image":"img/projects/netcore-3.jpg","title":"High-Performance API - Optimized endpoints with caching, compression and async operations"}
+              ]'>
+              View Gallery
+            </button>
+          </div>
+          <div class="bg-gray-50 p-4 border-t">
+            <p class="text-gray-700 text-sm leading-relaxed">
+              Built high-performance backend services using .NET Core with microservices architecture. 
+              Implemented cloud deployment, containerization, and CI/CD pipelines for seamless scaling and maintenance.
+            </p>
+          </div>
+        </div>
+
+        <!-- Project Card Flutter -->
+        <!--<div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
+          <div class="p-5">
+            <img src="iconos/flutter.png" class="w-full h-40 object-contain mb-4" />
+            <h4 class="text-xl font-semibold mb-2">Flutter</h4>
+            <p class="text-gray-600 text-sm mb-6">
+              APIs and backend services built on .NET Core with modern architecture patterns.
+            </p>
+            <button 
+              class="view-project w-full px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition font-medium" 
+              data-gallery="netcore" 
+              data-images='[
+                {"image":"img/projects/netcore-1.jpg","title":"Microservices Architecture - Scalable services using .NET Core with Docker containerization"},
+                {"image":"img/projects/netcore-2.jpg","title":"Cloud Integration - Azure deployment with CI/CD pipelines and auto-scaling"},
+                {"image":"img/projects/netcore-3.jpg","title":"High-Performance API - Optimized endpoints with caching, compression and async operations"}
+              ]'>
+              View Gallery
+            </button>
+          </div>
+          <div class="bg-gray-50 p-4 border-t">
+            <p class="text-gray-700 text-sm leading-relaxed">
+              Built high-performance backend services using .NET Core with microservices architecture. 
+              Implemented cloud deployment, containerization, and CI/CD pipelines for seamless scaling and maintenance.
+            </p>
+          </div>
+        </div>-->
+
+        <!-- Project Card Ionic -->
+        <!--<div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
+          <div class="p-5">
+            <img src="iconos/ionic.png" class="w-full h-40 object-contain mb-4" />
+            <h4 class="text-xl font-semibold mb-2">Ionic</h4>
+            <p class="text-gray-600 text-sm mb-6">
+              APIs and backend services built on .NET Core with modern architecture patterns.
+            </p>
+            <button 
+              class="view-project w-full px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition font-medium" 
+              data-gallery="netcore" 
+              data-images='[
+                {"image":"img/projects/netcore-1.jpg","title":"Microservices Architecture - Scalable services using .NET Core with Docker containerization"},
+                {"image":"img/projects/netcore-2.jpg","title":"Cloud Integration - Azure deployment with CI/CD pipelines and auto-scaling"},
+                {"image":"img/projects/netcore-3.jpg","title":"High-Performance API - Optimized endpoints with caching, compression and async operations"}
+              ]'>
+              View Gallery
+            </button>
+          </div>
+          <div class="bg-gray-50 p-4 border-t">
+            <p class="text-gray-700 text-sm leading-relaxed">
+              Built high-performance backend services using .NET Core with microservices architecture. 
+              Implemented cloud deployment, containerization, and CI/CD pipelines for seamless scaling and maintenance.
+            </p>
+          </div>
+        </div>-->
+
+        <!-- Project Card Python -->
+        <div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
+          <div class="p-5">
+            <img src="iconos/python-icon.jpg" class="w-full h-40 object-contain mb-4" />
+            <h4 class="text-xl font-semibold mb-2">Python</h4>
+            <p class="text-gray-600 text-sm mb-6">
+              APIs and backend services built on .NET Core with modern architecture patterns.
+            </p>
+            <button 
+              class="view-project w-full px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition font-medium" 
+              data-gallery="netcore" 
+              data-images='[
+                {"image":"img/projects/netcore-1.jpg","title":"Microservices Architecture - Scalable services using .NET Core with Docker containerization"},
+                {"image":"img/projects/netcore-2.jpg","title":"Cloud Integration - Azure deployment with CI/CD pipelines and auto-scaling"},
+                {"image":"img/projects/netcore-3.jpg","title":"High-Performance API - Optimized endpoints with caching, compression and async operations"}
+              ]'>
+              View Gallery
+            </button>
+          </div>
+          <div class="bg-gray-50 p-4 border-t">
+            <p class="text-gray-700 text-sm leading-relaxed">
+              Built high-performance backend services using .NET Core with microservices architecture. 
+              Implemented cloud deployment, containerization, and CI/CD pipelines for seamless scaling and maintenance.
+            </p>
+          </div>
+        </div>
+
+        <!-- Project Card GOLANG -->
+        <div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
+          <div class="p-5">
+            <img src="iconos/golang.png" class="w-full h-40 object-contain mb-4" />
+            <h4 class="text-xl font-semibold mb-2">GO</h4>
+            <p class="text-gray-600 text-sm mb-6">
+              APIs and backend services built on .NET Core with modern architecture patterns.
+            </p>
+            <button 
+              class="view-project w-full px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition font-medium" 
+              data-gallery="netcore" 
+              data-images='[
+                {"image":"img/projects/netcore-1.jpg","title":"Microservices Architecture - Scalable services using .NET Core with Docker containerization"},
+                {"image":"img/projects/netcore-2.jpg","title":"Cloud Integration - Azure deployment with CI/CD pipelines and auto-scaling"},
+                {"image":"img/projects/netcore-3.jpg","title":"High-Performance API - Optimized endpoints with caching, compression and async operations"}
+              ]'>
+              View Gallery
+            </button>
+          </div>
+          <div class="bg-gray-50 p-4 border-t">
+            <p class="text-gray-700 text-sm leading-relaxed">
+              Built high-performance backend services using .NET Core with microservices architecture. 
+              Implemented cloud deployment, containerization, and CI/CD pipelines for seamless scaling and maintenance.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <h3 class="text-3xl font-semibold mb-6 text-center">Contact Me</h3>
+      <form class="grid md:grid-cols-2 gap-6">
+        <input type="text" placeholder="Name" class="border rounded-lg p-3 w-full" />
+        <input type="email" placeholder="Email" class="border rounded-lg p-3 w-full" />
+        <textarea placeholder="Message" class="border rounded-lg p-3 w-full md:col-span-2 h-32"></textarea>
+        <button class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 md:col-span-2">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="py-6 text-center text-sm text-gray-500">
+    © 2025 Pablo Taddei — Fullstack Developer
+  </footer>
+
+  <!-- Modal Popup -->
+  <div id="imageModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle">Project Image</h2>
+        <button class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <img id="modalImage" src="" alt="Project" />
+        <button class="modal-nav prev">❮</button>
+        <button class="modal-nav next">❯</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function smoothScroll(target, duration = 1000) {
+      const startPosition = window.pageYOffset;
+      const element = document.querySelector(target);
+      if (!element) return;
+      
+      const endPosition = element.offsetTop - 80;
+      const distance = endPosition - startPosition;
+      let start = null;
+
+      window.requestAnimationFrame(function step(timestamp) {
+        if (!start) start = timestamp;
+        const progress = (timestamp - start) / duration;
+
+        if (progress < 1) {
+          window.scrollTo(0, startPosition + distance * easeInOutQuad(progress));
+          window.requestAnimationFrame(step);
+        } else {
+          window.scrollTo(0, endPosition);
+        }
+      });
+    }
+
+    function easeInOutQuad(t) {
+      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          smoothScroll(this.getAttribute('href'));
+        });
+      });
+
+      // Modal functionality
+      const modal = document.getElementById('imageModal');
+      const closeBtn = document.querySelector('.close-btn');
+      const modalImage = document.getElementById('modalImage');
+      const modalTitle = document.getElementById('modalTitle');
+      let currentGallery = [];
+      let currentIndex = 0;
+
+      document.querySelectorAll('.view-project').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const imagesJson = this.getAttribute('data-images');
+          
+          if (imagesJson) {
+            currentGallery = JSON.parse(imagesJson);
+            currentIndex = 0;
+            openModal(currentIndex);
+          }
+        });
+      });
+
+      function openModal(index) {
+        currentIndex = index;
+        const item = currentGallery[currentIndex];
+        modalImage.src = item.image;
+        modalTitle.textContent = item.title;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+
+      closeBtn.addEventListener('click', closeModal);
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      document.querySelector('.modal-nav.prev').addEventListener('click', function() {
+        currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+        openModal(currentIndex);
+      });
+
+      document.querySelector('.modal-nav.next').addEventListener('click', function() {
+        currentIndex = (currentIndex + 1) % currentGallery.length;
+        openModal(currentIndex);
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (modal.classList.contains('active')) {
+          if (e.key === 'ArrowLeft') currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+          if (e.key === 'ArrowRight') currentIndex = (currentIndex + 1) % currentGallery.length;
+          if (e.key === 'Escape') closeModal();
+          if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') openModal(currentIndex);
+        }
+      });
+    });
+  </script>
 </body>
 </html>

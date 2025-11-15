@@ -85,3 +85,20 @@ $(function(){
 
      
 });
+
+// Archivo moderno para futuras funcionalidades del portfolio
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Lightbox2 se inicializa automáticamente
+  // Aquí puedes agregar otras funcionalidades personalizadas
+  
+  console.log('Portfolio loaded successfully');
+  
+  // Ejemplo: agregar event listeners personalizados si es necesario
+  const lightboxLinks = document.querySelectorAll('[data-lightbox]');
+  lightboxLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      // Lightbox2 maneja el click automáticamente
+    });
+  });
+});

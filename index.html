@@ -7,165 +7,27 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <style>
-    body { font-family: 'Inter', sans-serif; }
-    
-    /* Modal Popup Styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      animation: fadeIn 0.3s ease-in;
-    }
-
-    .modal.active {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .modal-content {
-      max-width: 90%;
-      max-height: 90vh;
-      position: relative;
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      animation: slideIn 0.3s ease-out;
-      display: flex;
-      flex-direction: column;
-    }
-
-    @keyframes slideIn {
-      from { transform: translateY(-50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    .modal-body {
-      position: relative;
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f5f5f5;
-      overflow: auto;
-      max-height: calc(90vh - 60px);
-    }
-
-    .modal img {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      display: block;
-      object-fit: contain;
-      padding: 20px;
-    }
-
-    .modal-header {
-      background: #1e40af;
-      color: white;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-shrink: 0;
-      min-height: 60px;
-    }
-
-    .modal-title {
-      margin: 0;
-      font-size: 14px;
-      font-weight: 600;
-      word-break: break-word;
-    }
-
-    .close-btn {
-      color: white;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 0 0 0 10px;
-      line-height: 1;
-      flex-shrink: 0;
-    }
-
-    .close-btn:hover {
-      color: #ccc;
-    }
-
-    .modal-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.5);
-      color: white;
-      border: none;
-      font-size: 24px;
-      padding: 12px 15px;
-      cursor: pointer;
-      z-index: 10;
-      border-radius: 4px;
-      transition: background 0.3s;
-    }
-
-    .modal-nav:hover {
-      background: rgba(0, 0, 0, 0.8);
-    }
-
-    .modal-nav.prev {
-      left: 15px;
-    }
-
-    .modal-nav.next {
-      right: 15px;
-    }
-
-    @media (max-width: 768px) {
-      .modal-content {
-        max-width: 95%;
-        max-height: 85vh;
-      }
-
-      .modal-title {
-        font-size: 12px;
-      }
-
-      .modal img {
-        padding: 15px;
-      }
-
-      .modal-nav {
-        font-size: 20px;
-        padding: 10px 12px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="bg-gray-50 text-gray-800">
   <!-- NAVBAR -->
   <nav class="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
     <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
       <h1 class="text-xl font-semibold">Pablo Taddei</h1>
-      <ul class="flex space-x-6 text-sm font-medium">
-        <li><a href="#home" class="hover:text-blue-600">Home</a></li>
-        <li><a href="#about" class="hover:text-blue-600">About</a></li>
-        <li><a href="#experience" class="hover:text-blue-600">Experience</a></li>
-        <li><a href="#projects" class="hover:text-blue-600">Projects</a></li>
-        <li><a href="#contact" class="hover:text-blue-600">Contact</a></li>
-      </ul>
+      <div class="flex items-center space-x-6">
+        <ul class="flex space-x-6 text-sm font-medium">
+          <li><a href="#home" class="hover:text-blue-600" data-i18n="nav.home">Home</a></li>
+          <li><a href="#about" class="hover:text-blue-600" data-i18n="nav.about">About</a></li>
+          <li><a href="#experience" class="hover:text-blue-600" data-i18n="nav.experience">Experience</a></li>
+          <li><a href="#projects" class="hover:text-blue-600" data-i18n="nav.projects">Projects</a></li>
+          <li><a href="#contact" class="hover:text-blue-600" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+        <!-- Language Selector -->
+        <div class="flex gap-2">
+          <button id="langEs" class="px-3 py-1 text-sm font-medium bg-blue-600 text-white rounded hover:bg-blue-700">ES</button>
+          <button id="langEn" class="px-3 py-1 text-sm font-medium text-gray-600 border border-gray-300 rounded hover:bg-gray-100">EN</button>
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -179,7 +41,8 @@
           scalable web applications with modern technologies.
         </p>
         <div class="mt-6">
-          <a href="#projects" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">View Projects</a>
+          <a href="#projects" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition" data-i18n="hero.viewProjects">View Projects</a>
+          <a href="/files/Pablo Taddei.pdf" download class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition" data-i18n="hero.downloadCV">Download CV</a>
         </div>
       </div>
       <div class="flex-1 flex justify-center">
@@ -191,14 +54,14 @@
   <!-- ABOUT SECTION -->
   <section id="about" class="py-20 bg-white">
     <div class="max-w-5xl mx-auto px-4">
-      <h3 class="text-3xl font-semibold mb-6">About Me</h3>
-      <p class="text-gray-700 leading-relaxed">
+      <h3 class="text-3xl font-semibold mb-6" data-i18n="about.title">About Me</h3>
+      <p class="text-gray-700 leading-relaxed about-desc">
         I'm Pablo, a fullstack developer with more than 8 years of professional experience in software development.
         I've worked with a variety of technologies across backend, frontend, and mobile, allowing me to adapt to
         different challenges and architectures.
       </p>
 
-      <h4 class="text-xl font-semibold mt-10 mb-4">Skills</h4>
+      <h4 class="text-xl font-semibold mt-10 mb-4" data-i18n="about.skillsTitle">Skills</h4>
       <div class="flex flex-wrap gap-3">
         <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">C# / .NET</span>
         <!--<span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">ASP.NET / Web API</span>-->
@@ -208,6 +71,7 @@
         <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">Node.js</span>
         <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">Express.js</span>
         <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">React.js</span>
+        <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">React Native</span>
         <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">Angular</span>
         <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">Python</span>
         <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">Go</span>
@@ -219,15 +83,15 @@
   <!-- EXPERIENCE TIMELINE -->
   <section id="experience" class="py-20 bg-gray-50">
     <div class="max-w-5xl mx-auto px-4">
-      <h3 class="text-3xl font-semibold mb-12 text-center">Experience</h3>
+      <h3 class="text-3xl font-semibold mb-12 text-center" data-i18n="experience.title">Experience</h3>
       <div class="relative border-l border-gray-300 ml-4">
 
         <!-- Q4Tech -->
         <div class="mb-10 ml-6">
           <div class="absolute w-3 h-3 bg-blue-600 rounded-full -left-1.5 mt-1.5"></div>
-          <h4 class="text-xl font-semibold">Q4Tech</h4>
-          <p class="text-sm text-gray-600">Analista de programación • Sep 2015 – Mar 2025 (9 años 7 meses)</p>
-          <p class="text-gray-700 mt-2 text-sm leading-relaxed">
+          <h4 class="text-xl font-semibold" data-i18n="experience.q4tech">Q4Tech</h4>
+          <p class="text-sm text-gray-600" data-i18n="experience.q4techRole">Analista de programación • Sep 2015 – Mar 2025 (9 años 7 meses)</p>
+          <p class="text-gray-700 mt-2 text-sm leading-relaxed" data-i18n="experience.q4techDesc">
             Desarrollo de software con Microsoft .NET (Visual Studio 2010, SQL Server 2008).<br>
             Desarrollo mobile con Android y React Native.<br>
             Desarrollo de WebApps utilizando AngularJS.
@@ -237,9 +101,9 @@
         <!-- QSolutions -->
         <div class="mb-10 ml-6">
           <div class="absolute w-3 h-3 bg-blue-600 rounded-full -left-1.5 mt-1.5"></div>
-          <h4 class="text-xl font-semibold">QSolutions S.A</h4>
-          <p class="text-sm text-gray-600">Programador • Mayo 2014 – Julio 2014 (3 meses)</p>
-          <p class="text-gray-700 mt-2 text-sm leading-relaxed">
+          <h4 class="text-xl font-semibold" data-i18n="experience.qsolutions">QSolutions S.A</h4>
+          <p class="text-sm text-gray-600" data-i18n="experience.qsolutionsRole">Programador • Mayo 2014 – Julio 2014 (3 meses)</p>
+          <p class="text-gray-700 mt-2 text-sm leading-relaxed" data-i18n="experience.qsolutionsDesc">
             Desarrollo de aplicaciones web y móviles.
           </p>
         </div>
@@ -247,9 +111,9 @@
         <!-- Accenture -->
         <div class="mb-10 ml-6">
           <div class="absolute w-3 h-3 bg-blue-600 rounded-full -left-1.5 mt-1.5"></div>
-          <h4 class="text-xl font-semibold">Accenture</h4>
-          <p class="text-sm text-gray-600">Programmer • Oct 2013 – Abr 2014 (7 meses)</p>
-          <p class="text-gray-700 mt-2 text-sm leading-relaxed">
+          <h4 class="text-xl font-semibold" data-i18n="experience.accenture">Accenture</h4>
+          <p class="text-sm text-gray-600" data-i18n="experience.accentureRole">Programmer • Oct 2013 – Abr 2014 (7 meses)</p>
+          <p class="text-gray-700 mt-2 text-sm leading-relaxed" data-i18n="experience.accentureDesc">
             Desarrollo de aplicaciones web para clientes corporativos en Buenos Aires.
           </p>
         </div>
@@ -257,9 +121,9 @@
         <!-- Tenaris CCR Project -->
         <div class="mb-10 ml-6">
           <div class="absolute w-3 h-3 bg-blue-600 rounded-full -left-1.5 mt-1.5"></div>
-          <h4 class="text-xl font-semibold">Tenaris (Proyecto CCR)</h4>
-          <p class="text-sm text-gray-600">Programador</p>
-          <p class="text-gray-700 mt-2 text-sm leading-relaxed">
+          <h4 class="text-xl font-semibold" data-i18n="experience.tenaris">Tenaris (Proyecto CCR)</h4>
+          <p class="text-sm text-gray-600" data-i18n="experience.tenariRole">Programador</p>
+          <p class="text-gray-700 mt-2 text-sm leading-relaxed" data-i18n="experience.tenarisDesc">
             Desarrollo con ASP MVC 4, MVVM (Knockout.js) y Microsoft Dynamics.
           </p>
         </div>
@@ -267,9 +131,9 @@
         <!-- Proyecto Publishing / SharePoint -->
         <div class="mb-10 ml-6">
           <div class="absolute w-3 h-3 bg-blue-600 rounded-full -left-1.5 mt-1.5"></div>
-          <h4 class="text-xl font-semibold">Proyecto Publishing 2.0 / CIO Content Apps</h4>
-          <p class="text-sm text-gray-600">Programmer • Oct 2011 – Oct 2013 (2 años 1 mes)</p>
-          <p class="text-gray-700 mt-2 text-sm leading-relaxed">
+          <h4 class="text-xl font-semibold" data-i18n="experience.publishing">Proyecto Publishing 2.0 / CIO Content Apps</h4>
+          <p class="text-sm text-gray-600" data-i18n="experience.publishingRole">Programmer • Oct 2011 – Oct 2013 (2 años 1 mes)</p>
+          <p class="text-gray-700 mt-2 text-sm leading-relaxed" data-i18n="experience.publishingDesc">
             Creación y mantenimiento de sitios web con SharePoint 2007.
           </p>
         </div>
@@ -281,7 +145,7 @@
   <!-- PROJECTS SECTION -->
   <section id="projects" class="py-20">
     <div class="max-w-6xl mx-auto px-4">
-      <h3 class="text-3xl font-semibold mb-10 text-center">Projects</h3>
+      <h3 class="text-3xl font-semibold mb-10 text-center" data-i18n="projects.title">Projects</h3>
       <div class="grid md:grid-cols-3 gap-8">
 
         <!-- Project Card .NET Developer -->
@@ -289,7 +153,7 @@
           <div class="p-5">
             <img src="iconos/vs.png" class="w-full h-40 object-contain mb-4" />
             <h4 class="text-xl font-semibold mb-2">.NET Developer</h4>
-            <p class="text-gray-600 text-sm mb-6">
+            <p class="text-gray-600 text-sm mb-6" data-i18n="projects.dotnet">
               A collection of enterprise applications built with .NET Framework, C#, and SQL Server.
             </p>
             <button 
@@ -299,15 +163,19 @@
                 {"image":"img/projects/net/estacionamiento/estacionamiento.png","title":"Estacionamiento App - github"},
                 {"image":"img/projects/net/cotizador/app_cotizador_para_tienda_de_ropa.png","title":"Cotizador App - Cotizador para una tienda de ropa"},
                 {"image":"img/projects/net/AppVideoClub.png","title":"VideoClub App - Github"}
-              ]'>
+              ]' data-i18n="projects.viewGallery">
               View Gallery
             </button>
           </div>
-          <div class="bg-gray-50 p-4 border-t">
-            <p class="text-gray-700 text-sm leading-relaxed">
+          <div class="bg-gray-50 p-4 border-t flex items-center justify-between">
+            <p class="text-gray-700 text-sm leading-relaxed flex-1">
               Developed robust enterprise solutions using .NET Framework with focus on scalability and performance. 
-              Implemented complex business logic, database optimization, and secure API integrations for corporate clients.
             </p>
+            <a href="https://github.com/pablotaddei/ejemplo-dotnet-projects" target="_blank" rel="noopener noreferrer" class="ml-3 flex-shrink-0 text-gray-600 hover:text-blue-600 transition">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
           </div>
         </div>
 
@@ -316,7 +184,7 @@
           <div class="p-5">
             <img src="iconos/HTML_CSS_JS.jpg" class="w-full h-40 object-contain mb-4" />
             <h4 class="text-xl font-semibold mb-2">Web Development</h4>
-            <p class="text-gray-600 text-sm mb-6">
+            <p class="text-gray-600 text-sm mb-6" data-i18n="projects.web">
               Modern UI/UX websites created using HTML5, CSS3, JavaScript and React.
             </p>
             <button 
@@ -324,15 +192,19 @@
               data-gallery="web" 
               data-images='[
                 {"image":"img/projects/web/diseño de un porfolio.PNG","title": "Diseño de un profile realizado en figma"}
-              ]'>
+              ]' data-i18n="projects.viewGallery">
               View Gallery
             </button>
           </div>
-          <div class="bg-gray-50 p-4 border-t">
-            <p class="text-gray-700 text-sm leading-relaxed">
-              Created responsive and interactive web applications with modern frameworks. 
-              Focused on user experience, accessibility, and performance optimization across all devices and browsers.
+          <div class="bg-gray-50 p-4 border-t flex items-center justify-between">
+            <p class="text-gray-700 text-sm leading-relaxed flex-1">
+              Created responsive and interactive web applications with modern frameworks.
             </p>
+            <a href="https://github.com/pablotaddei/web-projects" target="_blank" rel="noopener noreferrer" class="ml-3 flex-shrink-0 text-gray-600 hover:text-blue-600 transition">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
           </div>
         </div>
 
@@ -341,7 +213,7 @@
           <div class="p-5">
             <img src="iconos/react2.png" class="w-full h-40 object-contain mb-4" />
             <h4 class="text-xl font-semibold mb-2">React.js</h4>
-            <p class="text-gray-600 text-sm mb-6">
+            <p class="text-gray-600 text-sm mb-6" data-i18n="projects.react">
               APIs and backend services built on .NET Core with modern architecture patterns.
             </p>
             <button 
@@ -355,15 +227,19 @@
                         {"image":"img/projects/web/fastlearn/login_react.PNG","title":"Plataforma de E-Learning - realizada en Reac.js + Supabase"},
                         {"image":"img/projects/web/fastlearn/signup_react.PNG","title":"Plataforma de E-Learning - realizada en Reac.js + Supabase"},
                         {"image":"img/projects/web/fastlearn/dashboard_react.PNG","title":"Plataforma de E-Learning - realizada en Reac.js + Supabase"}
-              ]'>
+              ]' data-i18n="projects.viewGallery">
               View Gallery
             </button>
           </div>
-          <div class="bg-gray-50 p-4 border-t">
-            <p class="text-gray-700 text-sm leading-relaxed">
-              Built high-performance backend services using .NET Core with microservices architecture. 
-              Implemented cloud deployment, containerization, and CI/CD pipelines for seamless scaling and maintenance.
+          <div class="bg-gray-50 p-4 border-t flex items-center justify-between">
+            <p class="text-gray-700 text-sm leading-relaxed flex-1">
+              Built high-performance applications with React.js and modern state management.
             </p>
+            <a href="https://github.com/pablotaddei/react-projects" target="_blank" rel="noopener noreferrer" class="ml-3 flex-shrink-0 text-gray-600 hover:text-blue-600 transition">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
           </div>
         </div>
 
@@ -372,7 +248,7 @@
           <div class="p-5">
             <img src="iconos/angular-icon.jpg" class="w-full h-40 object-contain mb-4" />
             <h4 class="text-xl font-semibold mb-2">Angular</h4>
-            <p class="text-gray-600 text-sm mb-6">
+            <p class="text-gray-600 text-sm mb-6" data-i18n="projects.angular">
               APIs and backend services built on .NET Core with modern architecture patterns.
             </p>
             <button 
@@ -387,50 +263,28 @@
                       {"image":"img/projects/web/notes_app/login_notesApp.PNG","title": "App de Notas (Angular 20+) + supabase"},
                       {"image":"img/projects/web/notes_app/signup_notesApp.PNG","title": "App de Notas (Angular 20+) + supabase"},
                       {"image":"img/projects/web/notes_app/noteApp_main.PNG","title": "App de Notas (Angular 20+) + supabase"}
-              ]'>
+              ]' data-i18n="projects.viewGallery">
               View Gallery
             </button>
           </div>
-          <div class="bg-gray-50 p-4 border-t">
-            <p class="text-gray-700 text-sm leading-relaxed">
-              Built high-performance backend services using .NET Core with microservices architecture. 
-              Implemented cloud deployment, containerization, and CI/CD pipelines for seamless scaling and maintenance.
+          <div class="bg-gray-50 p-4 border-t flex items-center justify-between">
+            <p class="text-gray-700 text-sm leading-relaxed flex-1">
+              Built enterprise applications with Angular framework and TypeScript.
             </p>
+            <a href="https://github.com/pablotaddei/angular-projects" target="_blank" rel="noopener noreferrer" class="ml-3 flex-shrink-0 text-gray-600 hover:text-blue-600 transition">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
           </div>
         </div>
-        <!-- Project Card Ionic -->
-        <!--<div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
-          <div class="p-5">
-            <img src="iconos/ionic.png" class="w-full h-40 object-contain mb-4" />
-            <h4 class="text-xl font-semibold mb-2">Ionic</h4>
-            <p class="text-gray-600 text-sm mb-6">
-              APIs and backend services built on .NET Core with modern architecture patterns.
-            </p>
-            <button 
-              class="view-project w-full px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition font-medium" 
-              data-gallery="netcore" 
-              data-images='[
-                {"image":"img/projects/netcore-1.jpg","title":"Microservices Architecture - Scalable services using .NET Core with Docker containerization"},
-                {"image":"img/projects/netcore-2.jpg","title":"Cloud Integration - Azure deployment with CI/CD pipelines and auto-scaling"},
-                {"image":"img/projects/netcore-3.jpg","title":"High-Performance API - Optimized endpoints with caching, compression and async operations"}
-              ]'>
-              View Gallery
-            </button>
-          </div>
-          <div class="bg-gray-50 p-4 border-t">
-            <p class="text-gray-700 text-sm leading-relaxed">
-              Built high-performance backend services using .NET Core with microservices architecture. 
-              Implemented cloud deployment, containerization, and CI/CD pipelines for seamless scaling and maintenance.
-            </p>
-          </div>
-        </div>-->
 
         <!-- Project Card Python -->
         <div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
           <div class="p-5">
             <img src="iconos/python-icon.jpg" class="w-full h-40 object-contain mb-4" />
             <h4 class="text-xl font-semibold mb-2">Python</h4>
-            <p class="text-gray-600 text-sm mb-6">
+            <p class="text-gray-600 text-sm mb-6" data-i18n="projects.python">
               APIs and backend services built on .NET Core with modern architecture patterns.
             </p>
             <button 
@@ -440,15 +294,19 @@
                 {"image":"img/projects/netcore-1.jpg","title":"Microservices Architecture - Scalable services using .NET Core with Docker containerization"},
                 {"image":"img/projects/netcore-2.jpg","title":"Cloud Integration - Azure deployment with CI/CD pipelines and auto-scaling"},
                 {"image":"img/projects/netcore-3.jpg","title":"High-Performance API - Optimized endpoints with caching, compression and async operations"}
-              ]'>
+              ]' data-i18n="projects.viewGallery">
               View Gallery
             </button>
           </div>
-          <div class="bg-gray-50 p-4 border-t">
-            <p class="text-gray-700 text-sm leading-relaxed">
-              Built high-performance backend services using .NET Core with microservices architecture. 
-              Implemented cloud deployment, containerization, and CI/CD pipelines for seamless scaling and maintenance.
+          <div class="bg-gray-50 p-4 border-t flex items-center justify-between">
+            <p class="text-gray-700 text-sm leading-relaxed flex-1">
+              Backend services and automation scripts built with Python.
             </p>
+            <a href="https://github.com/pablotaddei/python-projects" target="_blank" rel="noopener noreferrer" class="ml-3 flex-shrink-0 text-gray-600 hover:text-blue-600 transition">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
           </div>
         </div>
 
@@ -457,7 +315,7 @@
           <div class="p-5">
             <img src="iconos/golang.png" class="w-full h-40 object-contain mb-4" />
             <h4 class="text-xl font-semibold mb-2">GO</h4>
-            <p class="text-gray-600 text-sm mb-6">
+            <p class="text-gray-600 text-sm mb-6" data-i18n="projects.go">
               APIs and backend services built on .NET Core with modern architecture patterns.
             </p>
             <button 
@@ -467,15 +325,19 @@
                 {"image":"img/projects/netcore-1.jpg","title":"Microservices Architecture - Scalable services using .NET Core with Docker containerization"},
                 {"image":"img/projects/netcore-2.jpg","title":"Cloud Integration - Azure deployment with CI/CD pipelines and auto-scaling"},
                 {"image":"img/projects/netcore-3.jpg","title":"High-Performance API - Optimized endpoints with caching, compression and async operations"}
-              ]'>
+              ]' data-i18n="projects.viewGallery">
               View Gallery
             </button>
           </div>
-          <div class="bg-gray-50 p-4 border-t">
-            <p class="text-gray-700 text-sm leading-relaxed">
-              Built high-performance backend services using .NET Core with microservices architecture. 
-              Implemented cloud deployment, containerization, and CI/CD pipelines for seamless scaling and maintenance.
+          <div class="bg-gray-50 p-4 border-t flex items-center justify-between">
+            <p class="text-gray-700 text-sm leading-relaxed flex-1">
+              High-performance microservices built with Go language.
             </p>
+            <a href="https://github.com/pablotaddei/go-projects" target="_blank" rel="noopener noreferrer" class="ml-3 flex-shrink-0 text-gray-600 hover:text-blue-600 transition">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
           </div>
         </div>
 
@@ -484,7 +346,7 @@
           <div class="p-5">
             <img src="iconos/flutter.png" class="w-full h-40 object-contain mb-4" />
             <h4 class="text-xl font-semibold mb-2">Flutter</h4>
-            <p class="text-gray-600 text-sm mb-6">
+            <p class="text-gray-600 text-sm mb-6" data-i18n="projects.flutter">
               APIs and backend services built on .NET Core with modern architecture patterns.
             </p>
             <button 
@@ -499,15 +361,19 @@
                 {"image":"img/projects/flutter/Quizmix/proceso_del_juego_quizmix.PNG","title":"High"},
                 {"image":"img/projects/flutter/app de config/app_de_configuraciones.PNG","title":"High"},
                 {"image":"img/projects/flutter/app de config/app_de_configuraciones_modo_dark.PNG","title":"High"}
-              ]'>
+              ]' data-i18n="projects.viewGallery">
               View Gallery
             </button>
           </div>
-          <div class="bg-gray-50 p-4 border-t">
-            <p class="text-gray-700 text-sm leading-relaxed">
-              Built high-performance backend services using .NET Core with microservices architecture. 
-              Implemented cloud deployment, containerization, and CI/CD pipelines for seamless scaling and maintenance.
+          <div class="bg-gray-50 p-4 border-t flex items-center justify-between">
+            <p class="text-gray-700 text-sm leading-relaxed flex-1">
+              Cross-platform mobile applications built with Flutter.
             </p>
+            <a href="https://github.com/pablotaddei/flutter-projects" target="_blank" rel="noopener noreferrer" class="ml-3 flex-shrink-0 text-gray-600 hover:text-blue-600 transition">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
           </div>
         </div>
       </div>
@@ -517,18 +383,18 @@
   <!-- CONTACT SECTION -->
   <section id="contact" class="py-20 bg-white">
     <div class="max-w-4xl mx-auto px-4">
-      <h3 class="text-3xl font-semibold mb-6 text-center">Contact Me</h3>
+      <h3 class="text-3xl font-semibold mb-6 text-center" data-i18n="contact.title">Contact Me</h3>
       <form class="grid md:grid-cols-2 gap-6">
-        <input type="text" placeholder="Name" class="border rounded-lg p-3 w-full" />
-        <input type="email" placeholder="Email" class="border rounded-lg p-3 w-full" />
-        <textarea placeholder="Message" class="border rounded-lg p-3 w-full md:col-span-2 h-32"></textarea>
-        <button class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 md:col-span-2">Send Message</button>
+        <input type="text" placeholder="Name" class="border rounded-lg p-3 w-full" data-i18n="contact.name" />
+        <input type="email" placeholder="Email" class="border rounded-lg p-3 w-full" data-i18n="contact.email" />
+        <textarea placeholder="Message" class="border rounded-lg p-3 w-full md:col-span-2 h-32" data-i18n="contact.message"></textarea>
+        <button class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 md:col-span-2" data-i18n="contact.send">Send Message</button>
       </form>
     </div>
   </section>
 
   <footer class="py-6 text-center text-sm text-gray-500">
-    © 2025 Pablo Taddei — Fullstack Developer
+    <span data-i18n="footer.message">© 2025 Pablo Taddei — Fullstack Developer</span>
   </footer>
 
   <!-- Modal Popup -->
@@ -547,6 +413,195 @@
   </div>
 
   <script>
+    // Translations
+    const translations = {
+      es: {
+        nav: {
+          home: "Inicio",
+          about: "Acerca de",
+          experience: "Experiencia",
+          projects: "Proyectos",
+          contact: "Contacto"
+        },
+        hero: {
+          title: "Desarrollador Fullstack",
+          description: "Hola, soy Pablo — un desarrollador de software fullstack especializado en crear aplicaciones web escalables con tecnologías modernas.",
+          viewProjects: "Ver Proyectos",
+          downloadCV: "Descargar CV"
+        },
+        about: {
+          title: "Acerca de Mí",
+          description: "Soy Pablo, un desarrollador fullstack con más de 8 años de experiencia profesional en desarrollo de software. He trabajado con una variedad de tecnologías en backend, frontend y mobile, lo que me permite adaptarme a diferentes desafíos y arquitecturas.",
+          skillsTitle: "Habilidades"
+        },
+        experience: {
+          title: "Experiencia",
+          q4tech: "Q4Tech",
+          q4techRole: "Analista de programación • Sep 2015 – Mar 2025 (9 años 7 meses)",
+          q4techDesc: "Desarrollo de software con Microsoft .NET (Visual Studio 2010, SQL Server 2008).<br>Desarrollo mobile con Android y React Native.<br>Desarrollo de WebApps utilizando AngularJS.",
+          qsolutions: "QSolutions S.A",
+          qsolutionsRole: "Programador • Mayo 2014 – Julio 2014 (3 meses)",
+          qsolutionsDesc: "Desarrollo de aplicaciones web y móviles.",
+          accenture: "Accenture",
+          accentureRole: "Programmer • Oct 2013 – Abr 2014 (7 meses)",
+          accentureDesc: "Desarrollo de aplicaciones web para clientes corporativos en Buenos Aires.",
+          tenaris: "Tenaris (Proyecto CCR)",
+          tenariRole: "Programador",
+          tenarisDesc: "Desarrollo con ASP MVC 4, MVVM (Knockout.js) y Microsoft Dynamics.",
+          publishing: "Proyecto Publishing 2.0 / CIO Content Apps",
+          publishingRole: "Programmer • Oct 2011 – Oct 2013 (2 años 1 mes)",
+          publishingDesc: "Creación y mantenimiento de sitios web con SharePoint 2007."
+        },
+        projects: {
+          title: "Proyectos",
+          viewGallery: "Ver Galería",
+          dotnet: "Soluciones empresariales robustas usando .NET Framework con enfoque en escalabilidad y rendimiento.",
+          web: "Aplicaciones web responsivas e interactivas creadas con frameworks modernos.",
+          react: "Aplicaciones de alto rendimiento construidas con React.js y gestión de estado moderna.",
+          angular: "Aplicaciones empresariales construidas con el framework Angular y TypeScript.",
+          python: "Servicios backend y scripts de automatización construidos con Python.",
+          go: "Microservicios de alto rendimiento construidos con el lenguaje Go.",
+          flutter: "Aplicaciones móviles multiplataforma construidas con Flutter."
+        },
+        contact: {
+          title: "Contactarme",
+          name: "Nombre",
+          email: "Correo Electrónico",
+          message: "Mensaje",
+          send: "Enviar Mensaje"
+        },
+        footer: "© 2025 Pablo Taddei — Desarrollador Fullstack"
+      },
+      en: {
+        nav: {
+          home: "Home",
+          about: "About",
+          experience: "Experience",
+          projects: "Projects",
+          contact: "Contact"
+        },
+        hero: {
+          title: "Fullstack Developer",
+          description: "Hi, I'm Pablo — a fullstack software developer specialized in building scalable web applications with modern technologies.",
+          viewProjects: "View Projects",
+          downloadCV: "Download CV"
+        },
+        about: {
+          title: "About Me",
+          description: "I'm Pablo, a fullstack developer with more than 8 years of professional experience in software development. I've worked with a variety of technologies across backend, frontend, and mobile, allowing me to adapt to different challenges and architectures.",
+          skillsTitle: "Skills"
+        },
+        experience: {
+          title: "Experience",
+          q4tech: "Q4Tech",
+          q4techRole: "Analista de programación • Sep 2015 – Mar 2025 (9 years 7 months)",
+          q4techDesc: "Software development with Microsoft .NET (Visual Studio 2010, SQL Server 2008).<br>Mobile development with Android and React Native.<br>WebApps development using AngularJS.",
+          qsolutions: "QSolutions S.A",
+          qsolutionsRole: "Programmer • May 2014 – July 2014 (3 months)",
+          qsolutionsDesc: "Web and mobile application development.",
+          accenture: "Accenture",
+          accentureRole: "Programmer • Oct 2013 – Apr 2014 (7 months)",
+          accentureDesc: "Web application development for corporate clients in Buenos Aires.",
+          tenaris: "Tenaris (CCR Project)",
+          tenariRole: "Programmer",
+          tenarisDesc: "Development with ASP MVC 4, MVVM (Knockout.js) and Microsoft Dynamics.",
+          publishing: "Publishing 2.0 Project / CIO Content Apps",
+          publishingRole: "Programmer • Oct 2011 – Oct 2013 (2 years 1 month)",
+          publishingDesc: "Creation and maintenance of websites with SharePoint 2007."
+        },
+        projects: {
+          title: "Projects",
+          viewGallery: "View Gallery",
+          dotnet: "Developed robust enterprise solutions using .NET Framework with focus on scalability and performance.",
+          web: "Created responsive and interactive web applications with modern frameworks.",
+          react: "Built high-performance applications with React.js and modern state management.",
+          angular: "Built enterprise applications with Angular framework and TypeScript.",
+          python: "Backend services and automation scripts built with Python.",
+          go: "High-performance microservices built with Go language.",
+          flutter: "Cross-platform mobile applications built with Flutter."
+        },
+        contact: {
+          title: "Contact Me",
+          name: "Name",
+          email: "Email",
+          message: "Message",
+          send: "Send Message"
+        },
+        footer: "© 2025 Pablo Taddei — Fullstack Developer"
+      }
+    };
+
+    let currentLang = localStorage.getItem('language') || 'es';
+
+    function t(key) {
+      const keys = key.split('.');
+      let value = translations[currentLang];
+      for (let k of keys) {
+        value = value[k];
+      }
+      return value;
+    }
+
+    function updatePageLanguage() {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.textContent = t(key);
+      });
+
+      // Update hero section
+      document.querySelector('h2').textContent = t('hero.title');
+      document.querySelectorAll('.hero-desc')[0].textContent = t('hero.description');
+      document.querySelectorAll('[href="#projects"]')[0].textContent = t('hero.viewProjects');
+      document.querySelectorAll('[href="/files/Pablo Taddei.pdf"]')[0].textContent = t('hero.downloadCV');
+
+      // Update about section
+      document.querySelectorAll('h3')[0].textContent = t('about.title');
+      document.querySelectorAll('.about-desc')[0].textContent = t('about.description');
+      document.querySelectorAll('h4')[0].textContent = t('about.skillsTitle');
+
+      // Update experience section
+      document.querySelectorAll('h3')[1].textContent = t('experience.title');
+
+      // Update contact section
+      document.querySelectorAll('h3')[2].textContent = t('contact.title');
+      document.querySelectorAll('input[placeholder]')[0].placeholder = t('contact.name');
+      document.querySelectorAll('input[placeholder]')[1].placeholder = t('contact.email');
+      document.querySelectorAll('textarea')[0].placeholder = t('contact.message');
+      document.querySelectorAll('button')[document.querySelectorAll('button').length - 1].textContent = t('contact.send');
+
+      // Update footer
+      document.querySelector('footer').textContent = t('footer.message');
+
+      localStorage.setItem('language', currentLang);
+    }
+
+    document.getElementById('langEs').addEventListener('click', () => {
+      currentLang = 'es';
+      document.getElementById('langEs').classList.add('bg-blue-600', 'text-white');
+      document.getElementById('langEs').classList.remove('text-gray-600', 'border', 'border-gray-300');
+      document.getElementById('langEn').classList.remove('bg-blue-600', 'text-white');
+      document.getElementById('langEn').classList.add('text-gray-600', 'border', 'border-gray-300');
+      updatePageLanguage();
+    });
+
+    document.getElementById('langEn').addEventListener('click', () => {
+      currentLang = 'en';
+      document.getElementById('langEn').classList.add('bg-blue-600', 'text-white');
+      document.getElementById('langEn').classList.remove('text-gray-600', 'border', 'border-gray-300');
+      document.getElementById('langEs').classList.remove('bg-blue-600', 'text-white');
+      document.getElementById('langEs').classList.add('text-gray-600', 'border', 'border-gray-300');
+      updatePageLanguage();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (currentLang === 'en') {
+        document.getElementById('langEn').click();
+      } else {
+        document.getElementById('langEs').click();
+      }
+      updatePageLanguage();
+    });
+
     function smoothScroll(target, duration = 1000) {
       const startPosition = window.pageYOffset;
       const element = document.querySelector(target);

@@ -1,104 +1,286 @@
-$(function(){
-     // aqui manejamos el scroll con los menus
-     $('li, a').click(function(){
-        let navegation = '.' + $(this).attr('id');
-        $('html, body').animate({
-            scrollTop: ($(navegation).offset().top)
-        }, 3000);
-     });
+// Translations
+const translations = {
+    es: {
+        nav: {
+          home: "Inicio",
+          about: "Acerca de",
+          experience: "Experiencia",
+          projects: "Proyectos",
+          contact: "Contacto"
+        },
+        hero: {
+          title: "Desarrollador Fullstack",
+          description: "Hola, soy Pablo — un desarrollador de software fullstack especializado en crear aplicaciones web escalables con tecnologías modernas.",
+          viewProjects: "Ver Proyectos",
+          downloadCV: "Descargar CV"
+        },
+        about: {
+          title: "Acerca de Mí",
+          description: "Soy Pablo, un desarrollador fullstack con más de 8 años de experiencia profesional en desarrollo de software. He trabajado con una variedad de tecnologías en backend, frontend y mobile, lo que me permite adaptarme a diferentes desafíos y arquitecturas.",
+          skillsTitle: "Habilidades"
+        },
+        experience: {
+          title: "Experiencia",
+          q4tech: "Q4Tech",
+          q4techRole: "Analista de programación • Sep 2015 – Mar 2025 (9 años 7 meses)",
+          q4techDesc: "Desarrollo de software con Microsoft .NET (Visual Studio 2010, SQL Server 2008).<br>Desarrollo mobile con Android y React Native.<br>Desarrollo de WebApps utilizando AngularJS.",
+          qsolutions: "QSolutions S.A",
+          qsolutionsRole: "Programador • Mayo 2014 – Julio 2014 (3 meses)",
+          qsolutionsDesc: "Desarrollo de aplicaciones web y móviles.",
+          accenture: "Accenture",
+          accentureRole: "Programmer • Oct 2013 – Abr 2014 (7 meses)",
+          accentureDesc: "Desarrollo de aplicaciones web para clientes corporativos en Buenos Aires.",
+          tenaris: "Tenaris (Proyecto CCR)",
+          tenariRole: "Programador",
+          tenarisDesc: "Desarrollo con ASP MVC 4, MVVM (Knockout.js) y Microsoft Dynamics.",
+          publishing: "Proyecto Publishing 2.0 / CIO Content Apps",
+          publishingRole: "Programmer • Oct 2011 – Oct 2013 (2 años 1 mes)",
+          publishingDesc: "Creación y mantenimiento de sitios web con SharePoint 2007."
+        },
+        projects: {
+          title: "Proyectos",
+          viewGallery: "Ver Galería",
+          dotnet: "Soluciones empresariales robustas usando .NET Framework con enfoque en escalabilidad y rendimiento.",
+          web: "Aplicaciones web responsivas e interactivas creadas con frameworks modernos.",
+          react: "Aplicaciones de alto rendimiento construidas con React.js y gestión de estado moderna.",
+          angular: "Aplicaciones empresariales construidas con el framework Angular y TypeScript.",
+          python: "Servicios backend y scripts de automatización construidos con Python.",
+          go: "Microservicios de alto rendimiento construidos con el lenguaje Go.",
+          flutter: "Aplicaciones móviles multiplataforma construidas con Flutter."
+        },
+        contact: {
+          title: "Contactarme",
+          name: "Nombre",
+          email: "Correo Electrónico",
+          message: "Mensaje",
+          send: "Enviar Mensaje"
+        },
+        footer: "© 2025 Pablo Taddei — Desarrollador Fullstack"
+      },
+      en: {
+        nav: {
+          home: "Home",
+          about: "About",
+          experience: "Experience",
+          projects: "Projects",
+          contact: "Contact"
+        },
+        hero: {
+          title: "Fullstack Developer",
+          description: "Hi, I'm Pablo — a fullstack software developer specialized in building scalable web applications with modern technologies.",
+          viewProjects: "View Projects",
+          downloadCV: "Download CV"
+        },
+        about: {
+          title: "About Me",
+          description: "I'm Pablo, a fullstack developer with more than 8 years of professional experience in software development. I've worked with a variety of technologies across backend, frontend, and mobile, allowing me to adapt to different challenges and architectures.",
+          skillsTitle: "Skills"
+        },
+        experience: {
+          title: "Experience",
+          q4tech: "Q4Tech",
+          q4techRole: "Analista de programación • Sep 2015 – Mar 2025 (9 years 7 months)",
+          q4techDesc: "Software development with Microsoft .NET (Visual Studio 2010, SQL Server 2008).<br>Mobile development with Android and React Native.<br>WebApps development using AngularJS.",
+          qsolutions: "QSolutions S.A",
+          qsolutionsRole: "Programmer • May 2014 – July 2014 (3 months)",
+          qsolutionsDesc: "Web and mobile application development.",
+          accenture: "Accenture",
+          accentureRole: "Programmer • Oct 2013 – Apr 2014 (7 months)",
+          accentureDesc: "Web application development for corporate clients in Buenos Aires.",
+          tenaris: "Tenaris (CCR Project)",
+          tenariRole: "Programmer",
+          tenarisDesc: "Development with ASP MVC 4, MVVM (Knockout.js) and Microsoft Dynamics.",
+          publishing: "Publishing 2.0 Project / CIO Content Apps",
+          publishingRole: "Programmer • Oct 2011 – Oct 2013 (2 years 1 month)",
+          publishingDesc: "Creation and maintenance of websites with SharePoint 2007."
+        },
+        projects: {
+          title: "Projects",
+          viewGallery: "View Gallery",
+          dotnet: "Developed robust enterprise solutions using .NET Framework with focus on scalability and performance.",
+          web: "Created responsive and interactive web applications with modern frameworks.",
+          react: "Built high-performance applications with React.js and modern state management.",
+          angular: "Built enterprise applications with Angular framework and TypeScript.",
+          python: "Backend services and automation scripts built with Python.",
+          go: "High-performance microservices built with Go language.",
+          flutter: "Cross-platform mobile applications built with Flutter."
+        },
+        contact: {
+          title: "Contact Me",
+          name: "Name",
+          email: "Email",
+          message: "Message",
+          send: "Send Message"
+        },
+        footer: "© 2025 Pablo Taddei — Fullstack Developer"
+      }
+    };
 
-     // aqui event click para las galerias de las imagenes
-     $('#vs-button').click(function(){
-        $.magnificPopup.open({
-            items: [
-                {
-                  src: 'img/projects/net/AppVideoClub.png',
-                  title: '.Net Framework : App realizada con winForm, administracion de un videoClub'
-                }
-              ],
-              gallery: {
-                enabled: true
-              },
-              type: 'image',
-        });
-     });
+    let currentLang = localStorage.getItem('language') || 'es';
 
-     $('#html-button').click(function(){
-        $.magnificPopup.open({
-            items: [
-                {
-                    src: 'img/projects/html/BSAS-APP.png',
-                    title: 'Ionic: App hibrida para android, localiza los distintos servicios dentro de la ciudad BSAS'
-                },
-                {
-                    src: 'img/projects/html/BSAS-APP1.png',
-                    title: 'Ionic: otra toma de la misma app hibrida (tablet)'
-                },
-                {
-                    src: 'img/projects/html/BSAS-APP2.png',
-                    title: 'Ionic: otra toma de la misma app hibrida (mobile)'
-                },
-                {
-                    src: 'img/projects/html/angularjs.png',
-                    title: 'Angularjs: aplicacion web utilizando este framework de javascripts'
-                }
+    function t(key) {
+      const keys = key.split('.');
+      let value = translations[currentLang];
+      for (let k of keys) {
+        value = value[k];
+      }
+      return value;
+    }
 
-            ],
-            gallery: {
-                enabled: true
-            },
-            type: 'image'
-        });
-     });
+    function updatePageLanguage() {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.textContent = t(key);
+      });
 
-     $('#blend-button').click(function(){
-        $.magnificPopup.open({
-            items: [
-                {
-                    src: 'img/projects/blender/crylers.png',
-                    title: 'Blender : modelado de un crysler imperial 1933'
-                },
-                {
-                    src: 'img/projects/blender/chevrolet-pickup.png',
-                    title: 'Blender : modelado de un Chevrolet Pickup 1951'
-                },
-                {
-                    src: 'img/projects/blender/bentley-mk6.png',
-                    title: 'Blender : modelado de un bentley mk6'
-                },
-                {
-                    src: 'img/projects/blender/pampa3.png',
-                    title: 'Blender : modelado de un IA 64 PAMPA 3'
-                },
-                {
-                    src:'img/projects/blender/escenario.png',
-                    title: 'Blender : creacion de materiales y texturas'
-                }
+      // Update hero section
+      document.querySelector('h2').textContent = t('hero.title');
+      document.querySelectorAll('.hero-desc')[0].textContent = t('hero.description');
+      document.querySelectorAll('[href="#projects"]')[0].textContent = t('hero.viewProjects');
+      document.querySelectorAll('[href="/files/Pablo Taddei.pdf"]')[0].textContent = t('hero.downloadCV');
 
-            ],
-            gallery: {
-                enabled: true
-            },
-            type: 'image'
-        });
-     });
+      // Update about section
+      document.querySelectorAll('h3')[0].textContent = t('about.title');
+      document.querySelectorAll('.about-desc')[0].textContent = t('about.description');
+      document.querySelectorAll('h4')[0].textContent = t('about.skillsTitle');
 
-     
-});
+      // Update experience section
+      document.querySelectorAll('h3')[1].textContent = t('experience.title');
 
-// Archivo moderno para futuras funcionalidades del portfolio
+      // Update contact section
+      document.querySelectorAll('h3')[2].textContent = t('contact.title');
+      document.querySelectorAll('input[placeholder]')[0].placeholder = t('contact.name');
+      document.querySelectorAll('input[placeholder]')[1].placeholder = t('contact.email');
+      document.querySelectorAll('textarea')[0].placeholder = t('contact.message');
+      document.querySelectorAll('button')[document.querySelectorAll('button').length - 1].textContent = t('contact.send');
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Lightbox2 se inicializa automáticamente
-  // Aquí puedes agregar otras funcionalidades personalizadas
-  
-  console.log('Portfolio loaded successfully');
-  
-  // Ejemplo: agregar event listeners personalizados si es necesario
-  const lightboxLinks = document.querySelectorAll('[data-lightbox]');
-  lightboxLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      // Lightbox2 maneja el click automáticamente
+      // Update footer
+      document.querySelector('footer').textContent = t('footer.message');
+
+      localStorage.setItem('language', currentLang);
+    }
+
+    document.getElementById('langEs').addEventListener('click', () => {
+      currentLang = 'es';
+      document.getElementById('langEs').classList.add('bg-blue-600', 'text-white');
+      document.getElementById('langEs').classList.remove('text-gray-600', 'border', 'border-gray-300');
+      document.getElementById('langEn').classList.remove('bg-blue-600', 'text-white');
+      document.getElementById('langEn').classList.add('text-gray-600', 'border', 'border-gray-300');
+      updatePageLanguage();
     });
-  });
-});
+
+    document.getElementById('langEn').addEventListener('click', () => {
+      currentLang = 'en';
+      document.getElementById('langEn').classList.add('bg-blue-600', 'text-white');
+      document.getElementById('langEn').classList.remove('text-gray-600', 'border', 'border-gray-300');
+      document.getElementById('langEs').classList.remove('bg-blue-600', 'text-white');
+      document.getElementById('langEs').classList.add('text-gray-600', 'border', 'border-gray-300');
+      updatePageLanguage();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (currentLang === 'en') {
+        document.getElementById('langEn').click();
+      } else {
+        document.getElementById('langEs').click();
+      }
+      updatePageLanguage();
+    });
+
+    function smoothScroll(target, duration = 1000) {
+      const startPosition = window.pageYOffset;
+      const element = document.querySelector(target);
+      if (!element) return;
+      
+      const endPosition = element.offsetTop - 80;
+      const distance = endPosition - startPosition;
+      let start = null;
+
+      window.requestAnimationFrame(function step(timestamp) {
+        if (!start) start = timestamp;
+        const progress = (timestamp - start) / duration;
+
+        if (progress < 1) {
+          window.scrollTo(0, startPosition + distance * easeInOutQuad(progress));
+          window.requestAnimationFrame(step);
+        } else {
+          window.scrollTo(0, endPosition);
+        }
+      });
+    }
+
+    function easeInOutQuad(t) {
+      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          smoothScroll(this.getAttribute('href'));
+        });
+      });
+
+      // Modal functionality
+      const modal = document.getElementById('imageModal');
+      const closeBtn = document.querySelector('.close-btn');
+      const modalImage = document.getElementById('modalImage');
+      const modalTitle = document.getElementById('modalTitle');
+      let currentGallery = [];
+      let currentIndex = 0;
+
+      document.querySelectorAll('.view-project').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const imagesJson = this.getAttribute('data-images');
+          
+          if (imagesJson) {
+            currentGallery = JSON.parse(imagesJson);
+            currentIndex = 0;
+            openModal(currentIndex);
+          }
+        });
+      });
+
+      function openModal(index) {
+        currentIndex = index;
+        const item = currentGallery[currentIndex];
+        modalImage.src = item.image;
+        modalTitle.textContent = item.title;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+
+      closeBtn.addEventListener('click', closeModal);
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      document.querySelector('.modal-nav.prev').addEventListener('click', function() {
+        currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+        openModal(currentIndex);
+      });
+
+      document.querySelector('.modal-nav.next').addEventListener('click', function() {
+        currentIndex = (currentIndex + 1) % currentGallery.length;
+        openModal(currentIndex);
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (modal.classList.contains('active')) {
+          if (e.key === 'ArrowLeft') currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+          if (e.key === 'ArrowRight') currentIndex = (currentIndex + 1) % currentGallery.length;
+          if (e.key === 'Escape') closeModal();
+          if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') openModal(currentIndex);
+        }
+      });
+    });

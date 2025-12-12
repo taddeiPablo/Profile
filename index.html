@@ -35,8 +35,8 @@
   <section id="home" class="pt-32 pb-20">
     <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
       <div class="flex-1">
-        <h2 class="text-4xl md:text-5xl font-bold leading-tight">Fullstack Developer</h2>
-        <p class="mt-4 text-lg text-gray-600">
+        <h2 class="text-4xl md:text-5xl font-bold leading-tight" data-i18n="hero.title">Fullstack Developer</h2>
+        <p class="mt-4 text-lg text-gray-600" data-i18n="hero.description">
           Hi, I'm Pablo — a fullstack software developer specialized in building
           scalable web applications with modern technologies.
         </p>
@@ -54,11 +54,8 @@
   <!-- ABOUT SECTION -->
   <section id="about" class="py-20 bg-white">
     <div class="max-w-5xl mx-auto px-4">
-      <h3 class="text-3xl font-semibold mb-6" data-i18n="about.title">About Me</h3>
-      <p class="text-gray-700 leading-relaxed about-desc">
-        I'm Pablo, a fullstack developer with more than 8 years of professional experience in software development.
-        I've worked with a variety of technologies across backend, frontend, and mobile, allowing me to adapt to
-        different challenges and architectures.
+      <h3 class="text-3xl font-semibold mb-6" data-i18n="about.title"></h3>
+      <p class="text-gray-700 leading-relaxed about-desc" data-i18n="about.description">
       </p>
 
       <h4 class="text-xl font-semibold mt-10 mb-4" data-i18n="about.skillsTitle">Skills</h4>
@@ -70,11 +67,12 @@
         <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">JavaScript</span>
         <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">Node.js</span>
         <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">Express.js</span>
+        <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">MongoDb</span>
         <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">React.js</span>
         <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">React Native</span>
         <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">Angular</span>
         <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">Python</span>
-        <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">Go</span>
+        <!--<span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">Go</span>-->
         <span class="px-4 py-2 bg-gray-200 rounded-lg text-sm font-medium">Flutter</span>
       </div>
     </div>
@@ -154,22 +152,20 @@
             <img src="iconos/vs.png" class="w-full h-40 object-contain mb-4" />
             <h4 class="text-xl font-semibold mb-2">.NET Developer</h4>
             <p class="text-gray-600 text-sm mb-6" data-i18n="projects.dotnet">
-              A collection of enterprise applications built with .NET Framework, C#, and SQL Server.
             </p>
             <button 
               class="view-project w-full px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition font-medium" 
               data-gallery="dotnet" 
               data-images='[
-                {"image":"img/projects/net/estacionamiento/estacionamiento.png","title":"Estacionamiento App - github"},
-                {"image":"img/projects/net/cotizador/app_cotizador_para_tienda_de_ropa.png","title":"Cotizador App - Cotizador para una tienda de ropa"},
-                {"image":"img/projects/net/AppVideoClub.png","title":"VideoClub App - Github"}
+                {"image":"img/projects/net/estacionamiento/estacionamiento.png","title":"Estacionamiento App, Visual Studio vb .net + Sql Server"},
+                {"image":"img/projects/net/cotizador/app_cotizador_para_tienda_de_ropa.png","title":"Cotizador App - Cotizador para una tienda de ropa, Visual Studio Community C#"},
+                {"image":"img/projects/net/AppVideoClub.png","title":"VideoClub App - Visual Studio 2010 C# + Sql Server 2008"}
               ]' data-i18n="projects.viewGallery">
-              View Gallery
+              
             </button>
           </div>
           <div class="bg-gray-50 p-4 border-t flex items-center justify-between">
-            <p class="text-gray-700 text-sm leading-relaxed flex-1">
-              Developed robust enterprise solutions using .NET Framework with focus on scalability and performance. 
+            <p class="text-gray-700 text-sm leading-relaxed flex-1" data-i18n="projectGit.titleLink">
             </p>
             <a href="https://github.com/taddeiPablo/.net_projects" target="_blank" rel="noopener noreferrer" class="ml-3 flex-shrink-0 text-gray-600 hover:text-blue-600 transition">
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -178,26 +174,24 @@
             </a>
           </div>
         </div>
-
         <!-- Project Card Web Development -->
         <div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
           <div class="p-5">
             <img src="iconos/HTML_CSS_JS.jpg" class="w-full h-40 object-contain mb-4" />
             <h4 class="text-xl font-semibold mb-2">Web Development</h4>
             <p class="text-gray-600 text-sm mb-6" data-i18n="projects.web">
-              Modern UI/UX websites created using HTML5, CSS3, JavaScript and React.
             </p>
             <button 
               class="view-project w-full px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition font-medium" 
               data-gallery="web" 
               data-images='[
-                {"image":"img/projects/web/diseño de un porfolio.PNG","title": "Diseño de un profile realizado en figma"}
+                {"image":"img/projects/web/diseño de un porfolio.PNG","title": "Diseño de un profile realizado en Figma"}
               ]' data-i18n="projects.viewGallery">
               View Gallery
             </button>
           </div>
           <div class="bg-gray-50 p-4 border-t flex items-center justify-between">
-            <p class="text-gray-700 text-sm leading-relaxed flex-1">
+            <p class="text-gray-700 text-sm leading-relaxed flex-1" data-i18n="projectGit.titleLink">
               Created responsive and interactive web applications with modern frameworks.
             </p>
             <a href="https://github.com/pablotaddei/web-projects" target="_blank" rel="noopener noreferrer" class="ml-3 flex-shrink-0 text-gray-600 hover:text-blue-600 transition">
@@ -207,7 +201,6 @@
             </a>
           </div>
         </div>
-
         <!-- Project Card React.js -->
         <div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
           <div class="p-5">
@@ -220,9 +213,9 @@
               class="view-project w-full px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition font-medium" 
               data-gallery="netcore" 
               data-images='[
-                			  {"image":"img/projects/web/apps creadas/pantalla inicial.png","title":"App de busqueda de peliculas en React.js"},
-                        {"image":"img/projects/web/apps creadas/pantalla de busqueda.png","title":"App de busqueda de peliculas en React.js"},
-			                  {"image":"img/projects/web/apps creadas/resultado de las peliculas buscadas.png","title":"App de busqueda de peliculas en React.js"},
+                			  {"image":"img/projects/web/apps creadas/pantalla inicial.png","title":"App de busqueda de peliculas en React.js + utilizacion de Api de Peliculas"},
+                        {"image":"img/projects/web/apps creadas/pantalla de busqueda.png","title":"App de busqueda de peliculas en React.js + utilizacion de Api de Peliculas"},
+			                  {"image":"img/projects/web/apps creadas/resultado de las peliculas buscadas.png","title":"App de busqueda de peliculas en React.js + + utilizacion de Api de Peliculas"},
                         {"image":"img/projects/web/fastlearn/home_react.PNG","title":"Plataforma de E-Learning - realizada en Reac.js + Supabase"},
                         {"image":"img/projects/web/fastlearn/login_react.PNG","title":"Plataforma de E-Learning - realizada en Reac.js + Supabase"},
                         {"image":"img/projects/web/fastlearn/signup_react.PNG","title":"Plataforma de E-Learning - realizada en Reac.js + Supabase"},
@@ -242,7 +235,6 @@
             </a>
           </div>
         </div>
-
         <!-- Project Card Angular -->
         <div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
           <div class="p-5">
@@ -255,10 +247,10 @@
               class="view-project w-full px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition font-medium" 
               data-gallery="netcore" 
               data-images='[
-               			  {"image":"img/projects/web/calculadora freelance/calculadora_freelance_angularjs.PNG","title":"Calculadora para freelancers en angular.js"},
-			                {"image":"img/projects/web/gifs_app/gifs_app.PNG","title": "Buscador de Gifs angular 20+"},
-                      {"image":"img/projects/web/gifs_app/gifs_app_search.PNG","title": "Buscador de Gifs (Angular 20+)"},
-                      {"image":"img/projects/web/gifs_app/gifs_app_busqueda_cache.PNG","title": "Buscador de Gifs (Angular 20+)"},
+               			  {"image":"img/projects/web/calculadora freelance/calculadora_freelance_angularjs.PNG","title":"Calculadora para freelancers en Angular.js"},
+			                {"image":"img/projects/web/gifs_app/gifs_app.PNG","title": "Buscador de Gifs (angular 20+) | utilizacion de api de Gifs"},
+                      {"image":"img/projects/web/gifs_app/gifs_app_search.PNG","title": "Buscador de Gifs (Angular 20+) | utilizacion de api de Gifs"},
+                      {"image":"img/projects/web/gifs_app/gifs_app_busqueda_cache.PNG","title": "Buscador de Gifs (Angular 20+) | utilizacion de api de Gifs"},
                       {"image":"img/projects/web/notes_app/Home_notesApp.PNG","title": "App de Notas (Angular 20+) + supabase"},
                       {"image":"img/projects/web/notes_app/login_notesApp.PNG","title": "App de Notas (Angular 20+) + supabase"},
                       {"image":"img/projects/web/notes_app/signup_notesApp.PNG","title": "App de Notas (Angular 20+) + supabase"},
@@ -268,7 +260,7 @@
             </button>
           </div>
           <div class="bg-gray-50 p-4 border-t flex items-center justify-between">
-            <p class="text-gray-700 text-sm leading-relaxed flex-1">
+            <p class="text-gray-700 text-sm leading-relaxed flex-1" data-i18n="projectGit.titleLink">
               Built enterprise applications with Angular framework and TypeScript.
             </p>
             <a href="https://github.com/taddeiPablo/Angular_projects" target="_blank" rel="noopener noreferrer" class="ml-3 flex-shrink-0 text-gray-600 hover:text-blue-600 transition">
@@ -278,28 +270,27 @@
             </a>
           </div>
         </div>
-
         <!-- Project Card Python -->
         <div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
           <div class="p-5">
             <img src="iconos/python-icon.jpg" class="w-full h-40 object-contain mb-4" />
             <h4 class="text-xl font-semibold mb-2">Python</h4>
             <p class="text-gray-600 text-sm mb-6" data-i18n="projects.python">
-              APIs and backend services built on .NET Core with modern architecture patterns.
+              APIs and backend services built with modern architecture patterns.
             </p>
             <button 
               class="view-project w-full px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition font-medium" 
               data-gallery="netcore" 
               data-images='[
-                {"image":"img/projects/netcore-1.jpg","title":"Microservices Architecture - Scalable services using .NET Core with Docker containerization"},
-                {"image":"img/projects/netcore-2.jpg","title":"Cloud Integration - Azure deployment with CI/CD pipelines and auto-scaling"},
-                {"image":"img/projects/netcore-3.jpg","title":"High-Performance API - Optimized endpoints with caching, compression and async operations"}
+                {"image","title":""},
+                {"image":"","title":""},
+                {"image":"","title":""}
               ]' data-i18n="projects.viewGallery">
               View Gallery
             </button>
           </div>
           <div class="bg-gray-50 p-4 border-t flex items-center justify-between">
-            <p class="text-gray-700 text-sm leading-relaxed flex-1">
+            <p class="text-gray-700 text-sm leading-relaxed flex-1" data-i18n="projectGit.titleLink">
               Backend services and automation scripts built with Python.
             </p>
             <a href="https://github.com/pablotaddei/python-projects" target="_blank" rel="noopener noreferrer" class="ml-3 flex-shrink-0 text-gray-600 hover:text-blue-600 transition">
@@ -309,9 +300,8 @@
             </a>
           </div>
         </div>
-
         <!-- Project Card GOLANG -->
-        <div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
+        <!--<div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
           <div class="p-5">
             <img src="iconos/golang.png" class="w-full h-40 object-contain mb-4" />
             <h4 class="text-xl font-semibold mb-2">GO</h4>
@@ -339,8 +329,8 @@
               </svg>
             </a>
           </div>
-        </div>
-
+        </div>-->
+        
         <!-- Project Card Flutter -->
         <div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
           <div class="p-5">
@@ -353,20 +343,20 @@
               class="view-project w-full px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition font-medium" 
               data-gallery="netcore" 
               data-images='[
-                {"image":"img/projects/flutter/imc_app/home_app_calc_imc.PNG","title":"Microservices Architecture - Scalable services using .NET Core with Docker containerization"},
-                {"image":"img/projects/flutter/imc_app/home_app_calc_imc_ejemplo.PNG","title":"Cloud Integration - Azure deployment with CI/CD pipelines and auto-scaling"},
-                {"image":"img/projects/flutter/imc_app/home_app_calc_imc_resultado.PNG","title":"High-Performance API - Optimized endpoints with caching, compression and async operations"},
-                {"image":"img/projects/flutter/Quizmix/Home_quizmix.PNG","title":"High"},
-                {"image":"img/projects/flutter/Quizmix/Categorias_quizmix.PNG","title":"High"},
-                {"image":"img/projects/flutter/Quizmix/proceso_del_juego_quizmix.PNG","title":"High"},
-                {"image":"img/projects/flutter/app de config/app_de_configuraciones.PNG","title":"High"},
-                {"image":"img/projects/flutter/app de config/app_de_configuraciones_modo_dark.PNG","title":"High"}
+                {"image":"img/projects/flutter/imc_app/home_app_calc_imc.PNG","title":"calculadora de imc en flutter"},
+                {"image":"img/projects/flutter/imc_app/home_app_calc_imc_ejemplo.PNG","title":"calculadora de imc en flutter"},
+                {"image":"img/projects/flutter/imc_app/home_app_calc_imc_resultado.PNG","title":"calculadora de imc en flutter"},
+                {"image":"img/projects/flutter/Quizmix/Home_quizmix.PNG","title":"Realizacion de un juego combinando quiz y trivia en flutter"},
+                {"image":"img/projects/flutter/Quizmix/Categorias_quizmix.PNG","title":"Realizacion de un juego combinando quiz y trivia en flutter"},
+                {"image":"img/projects/flutter/Quizmix/proceso_del_juego_quizmix.PNG","title":"Realizacion de un juego combinando quiz y trivia en flutter"},
+                {"image":"img/projects/flutter/app de config/app_de_configuraciones.PNG","title":"Pequeña app de configuracion de usuario en flutter"},
+                {"image":"img/projects/flutter/app de config/app_de_configuraciones_modo_dark.PNG","title": "Pequeña app de configuracion de usuario en flutter"}
               ]' data-i18n="projects.viewGallery">
               View Gallery
             </button>
           </div>
           <div class="bg-gray-50 p-4 border-t flex items-center justify-between">
-            <p class="text-gray-700 text-sm leading-relaxed flex-1">
+            <p class="text-gray-700 text-sm leading-relaxed flex-1" data-i18n="projectGit.titleLink">
               Cross-platform mobile applications built with Flutter.
             </p>
             <a href="https://github.com/taddeiPablo/Flutter_Projects" target="_blank" rel="noopener noreferrer" class="ml-3 flex-shrink-0 text-gray-600 hover:text-blue-600 transition">
@@ -376,13 +366,12 @@
             </a>
           </div>
         </div>
-
-        <!-- Project Card Flutter -->
+        <!-- Project Card NODE.JS -->
         <div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
           <div class="p-5">
             <img src="iconos/nodejs-icon.png" class="w-full h-40 object-contain mb-4" />
-            <h4 class="text-xl font-semibold mb-2">Node</h4>
-            <p class="text-gray-600 text-sm mb-6" data-i18n="projects.flutter">
+            <h4 class="text-xl font-semibold mb-2">Node.js</h4>
+            <p class="text-gray-600 text-sm mb-6" data-i18n="projects.node">
               APIs and backend services built on .NET Core with modern architecture patterns.
             </p>
             <button 
@@ -402,10 +391,10 @@
             </button>
           </div>
           <div class="bg-gray-50 p-4 border-t flex items-center justify-between">
-            <p class="text-gray-700 text-sm leading-relaxed flex-1">
+            <p class="text-gray-700 text-sm leading-relaxed flex-1" data-i18n="projectGit.titleLink">
               Cross-platform mobile applications built with Flutter.
             </p>
-            <a href="https://github.com/taddeiPablo/Flutter_Projects" target="_blank" rel="noopener noreferrer" class="ml-3 flex-shrink-0 text-gray-600 hover:text-blue-600 transition">
+            <a href="https://github.com/taddeiPablo/" target="_blank" rel="noopener noreferrer" class="ml-3 flex-shrink-0 text-gray-600 hover:text-blue-600 transition">
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
               </svg>

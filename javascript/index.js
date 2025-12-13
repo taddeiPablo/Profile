@@ -23,7 +23,7 @@ const translations = {
           title: "Experiencia",
           q4tech: "Q4Tech",
           q4techRole: "Analista de programación • Sep 2015 – Mar 2025 (9 años 7 meses)",
-          q4techDesc: "Desarrollo de software con Microsoft .NET (Visual Studio 2010, SQL Server 2008).<br>Desarrollo mobile con Android y React Native.<br>Desarrollo de WebApps utilizando AngularJS.",
+          q4techDesc: "Desarrollo de software con Microsoft .NET (Visual Studio 2010, SQL Server 2008). Desarrollo mobile con Android y React Native. Desarrollo de WebApps utilizando AngularJS.",
           qsolutions: "QSolutions S.A",
           qsolutionsRole: "Programador • Mayo 2014 – Julio 2014 (3 meses)",
           qsolutionsDesc: "Desarrollo de aplicaciones web y móviles.",

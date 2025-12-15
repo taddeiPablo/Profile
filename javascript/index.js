@@ -143,7 +143,7 @@ function updatePageLanguage() {
 
   // Update hero section
   document.querySelector('h2').textContent = t('hero.title');
-  document.querySelectorAll('.hero-desc')[0].textContent = t('hero.description');
+  document.querySelector('[data-i18n="hero.description"]').textContent = t('hero.description');
   document.querySelectorAll('[href="#projects"]')[0].textContent = t('hero.viewProjects');
   document.querySelectorAll('[href="/files/Pablo Taddei.pdf"]')[0].textContent = t('hero.downloadCV');
 
@@ -160,10 +160,10 @@ function updatePageLanguage() {
   document.querySelectorAll('input[placeholder]')[0].placeholder = t('contact.name');
   document.querySelectorAll('input[placeholder]')[1].placeholder = t('contact.email');
   document.querySelectorAll('textarea')[0].placeholder = t('contact.message');
-  document.querySelectorAll('button')[document.querySelectorAll('button').length - 1].textContent = t('contact.send');
+  document.querySelector('#contact button').textContent = t('contact.send');
 
   // Update footer
-  document.querySelector('footer').textContent = t('footer.message');
+  document.querySelector('[data-i18n="footer.message"]').textContent = t('footer.message');
 
   localStorage.setItem('language', currentLang);
 }
